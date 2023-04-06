@@ -41,30 +41,6 @@ function ScreenShake(magnitude,frames){
 
 }
 
-function SelectEnemyWithKeys(){
-	
-	//Select enemy to interact with
-		var keySelectLeft = (keyboard_check_pressed(ord("A")) || keyboard_check_pressed(vk_left) || keyboard_check_pressed(ord("W")) || keyboard_check_pressed(vk_up))*-1;
-		var keySelectRight = (keyboard_check_pressed(ord("D")) || keyboard_check_pressed(vk_right) || keyboard_check_pressed(ord("S")) || keyboard_check_pressed(vk_down));
-			
-		//keep selection on the enemy list number range
-		if(enemySelected <= (global.enemiesOnBattle-1) && enemySelected >= 0){
-			enemySelected += keySelectLeft+keySelectRight;
-		}
-		else{
-			if(enemySelected > (global.enemiesOnBattle-1)){
-				enemySelected = 0;
-			}
-			else if(enemySelected < 0){
-				enemySelected = (global.enemiesOnBattle-1);
-			}
-		}//keep selection on the enemy list number range
-				
-		enemyTarget = oBattleManager.enemiesOnBattleList[|enemySelected];	
-		with(enemyTarget) flash = 0.5;
-		return enemyTarget;
-}
-
 function SelectButtonWithKeys(buttonList){
 	
 	
@@ -96,24 +72,6 @@ function SelectButtonWithKeys(buttonList){
 		if(lastActionSelected != actionSelected)buttonList[lastActionSelected].selected = false;
 		
 		return buttonList[actionSelected];			
-}
-	
-function DrawHealthBar(maxHealth,currentHealth){
-	
-	//draw healthbar
-	draw_sprite(sHealthBar,1,healthBarXOffset,healthBarYOffset);
-	draw_sprite_ext(
-		sHealthBar,
-		0,
-		healthBarXOffset,
-		healthBarYOffset,
-		max(currentHealth/maxHealth,0),
-		image_yscale,
-		image_angle,
-		image_blend,
-		image_alpha
-	);
-	
 }
 
 

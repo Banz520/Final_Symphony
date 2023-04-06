@@ -94,3 +94,21 @@ function CreateHitLinearProyectile(targetToHit,spd,attackByPlayer,proyectileSpri
 	
 	
 }
+
+function DrawHealthBar(maxHealth,currentHealth){
+	
+	//draw healthbar
+	draw_sprite(sHealthBar,1,healthBarXOffset,healthBarYOffset);
+	draw_sprite_ext(
+		sHealthBar,
+		0,
+		healthBarXOffset,
+		healthBarYOffset,
+		max(currentHealth/maxHealth,0),
+		image_yscale,
+		image_angle,
+		image_blend,
+		image_alpha
+	);
+	
+}

@@ -44,15 +44,23 @@ function EnemyStateHurt(){
 	
 	sprite_index = sprHurt;
 	AnimateSprite();
+	show_debug_message(localFrame);
 	//screen shake
+	
 	hitScreenShake = true;
 	if(hitScreenShake)ScreenShake(1,2);
 	hitScreenShake = false;
+	
 	//flash
 	flash = 0.5;
 	flashShader = shWhiteFlash;
+	
+	show_debug_message(animationEnd);
 	//change state
-	if(animationEnd)charaState = charaStateWait;
+	if(animationEnd){
+		charaState = charaStateWait;
+		show_debug_message("trans from state hurt 2 state wait");
+	}
 }
 
 function EnemyStateDead(){

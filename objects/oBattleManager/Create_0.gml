@@ -82,9 +82,12 @@ function SetTurns(){
 					&& !instance_exists(oParabolicProyectile) 
 					&& !instance_exists(oLinearProyectile)){
 					//activate playercharaTurn
+					currentPlayerCharaOnTurn.localFrame = 0;
+					show_debug_message("manager changin player state 2 turn");
 					currentPlayerCharaOnTurn.charaState = currentPlayerCharaOnTurn.charaStateTurn;
+
 					global.combatState = COMBAT_STATE.PLAYER_ACT;
-					//show_debug_message(global.battlePoints);
+
 				}// if playerchara not hurt and not attacks being perform
 				break;
 			}// if playerchara exist
@@ -123,10 +126,12 @@ function SetTurns(){
 					&& !instance_exists(oHitMarker) 
 					&& !instance_exists(oParabolicProyectile) 
 					&& !instance_exists(oLinearProyectile)) 
-					//&& oPlayer.charaState != oPlayer.charaStateHurt)
 					{
 					//activate enemyTurn
+				
+					show_debug_message("manager changin enemy state 2 turn");
 					currentEnemyOnTurn.charaState = currentEnemyOnTurn.charaStateTurn;
+					
 					global.combatState = COMBAT_STATE.ENEMY_ACT;
 				}// if enemy not hurt and not attacks being perform
 				break;

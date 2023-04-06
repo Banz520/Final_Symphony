@@ -118,19 +118,22 @@ function PlayerStateDefend(){
 function PlayerStateHurt(){
 	
 	sprite_index = currentSprHurt;
-	AnimateSprite();
+	AnimateSprite(1);
+	show_debug_message(localFrame);
 	
 	//screen shake
-	
 	if(hitScreenShake) ScreenShake(2,4);	
 	hitScreenShake = false;
+	
 	//flash
 	flash = 0.5;
 	flashShader = shWhiteFlash;
 	
+	show_debug_message(animationEnd);
 	//change state
 	if(animationEnd){
 		charaState = charaStateWait;
+		show_debug_message("trans from state hurt 2 state wait");
 	}
 	
 }

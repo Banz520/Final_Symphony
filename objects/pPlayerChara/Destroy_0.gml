@@ -4,3 +4,4 @@ var deletePlayerChara = ds_list_find_index(oBattleManager.playerCharasOnBattleLi
 ds_list_delete(oBattleManager.playerCharasOnBattleList,deletePlayerChara);
 
 global.playerCharasOnBattle--;
+
