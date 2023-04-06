@@ -5,6 +5,41 @@ event_inherited();
 enemySelected = 0;
 
 
+function PlayerCharaStateTurn(){
+	
+	sprite_index = sprIdle;
+	AnimateSprite();
+		
+	DeployPlayerActionMenu();
+		
+	var keyConfirmAction = keyboard_check_pressed(vk_space);
+	var keyCancelAction = keyboard_check_pressed(vk_tab);
+	keyConfirmPressedCount += keyConfirmAction-keyCancelAction;
+	if(keyConfirmPressedCount < 0)keyConfirmPressedCount = 0;
+		
+	switch(keyConfirmPressedCount){
+		case 0:{
+			buttonSelected = SelectButtonWithKeys(buttonActionList);
+			break;
+		}
+		case 1: {
+			if(buttonSelected == oButtonPlayerSpecial && global.battlePoints < charaSpecialActCost)keyConfirmPressedCount--;
+			if(buttonSelected == oButtonPlayerAttack || buttonSelected == oButtonPlayerSpecial)enemyTarget = SelectEnemyWithKeys();
+			else keyConfirmPressedCount++;
+			break;
+		}
+		case 2: {
+			if(buttonSelected == oButtonPlayerSpecial)global.battlePoints -= charaSpecialActCost;
+			buttonSelected.executeAction = true;
+			break;
+		}
+		default: break;
+	}
+	
+}
+
+charaStateTurn = PlayerCharaStateTurn;
+
 function SelectEnemyWithKeys(){
 	
 	//Select enemy to interact with
@@ -28,7 +63,6 @@ function SelectEnemyWithKeys(){
 	with(enemyTarget) flash = 0.5;
 	return enemyTarget;
 }
-	
 	
 function DeployPlayerActionMenu(){
 	

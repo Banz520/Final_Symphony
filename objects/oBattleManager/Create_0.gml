@@ -81,22 +81,18 @@ function SetTurns(){
 					&& !instance_exists(oHitMarker) 
 					&& !instance_exists(oParabolicProyectile) 
 					&& !instance_exists(oLinearProyectile)){
-					//activate playercharaTurn
-					currentPlayerCharaOnTurn.localFrame = 0;
-					show_debug_message("manager changin player state 2 turn");
+					
 					currentPlayerCharaOnTurn.charaState = currentPlayerCharaOnTurn.charaStateTurn;
 
 					global.combatState = COMBAT_STATE.PLAYER_ACT;
 
 				}// if playerchara not hurt and not attacks being perform
 				break;
-			}// if playerchara exist
+			}
 			else{
 				playerCharaOnTurnCount = 0;
 				break;
 			}
-			
-		
 		
 		}
 		
@@ -109,13 +105,12 @@ function SetTurns(){
 					playerCharaOnTurnCount++;
 					global.combatState = COMBAT_STATE.PLAYER_TURN;	
 				}
+				
 				else{
-						
 					playerCharaOnTurnCount = 0;
 					global.combatState = COMBAT_STATE.WAIT;
 				}
-			}// if player charastatewait 
-				
+			}
 			break;
 		}
 		
@@ -127,15 +122,14 @@ function SetTurns(){
 					&& !instance_exists(oParabolicProyectile) 
 					&& !instance_exists(oLinearProyectile)) 
 					{
-					//activate enemyTurn
-				
-					show_debug_message("manager changin enemy state 2 turn");
+					
 					currentEnemyOnTurn.charaState = currentEnemyOnTurn.charaStateTurn;
 					
 					global.combatState = COMBAT_STATE.ENEMY_ACT;
 				}// if enemy not hurt and not attacks being perform
 				break;
-			}// if enemy exist
+			}
+			
 			else{
 				enemyOnTurnCount = 0;
 				break;
@@ -157,7 +151,7 @@ function SetTurns(){
 					if(global.battlePoints < 10)global.battlePoints++;
 					global.combatState = COMBAT_STATE.WAIT;
 				}
-			}// if enemystatewait 
+			}
 			break;
 			
 		}	
@@ -175,6 +169,11 @@ function SetTurns(){
 			}
 			break;
 		}
+		
+		case COMBAT_STATE.HURT:{
 			
+			
+		}
 	}//switch
+	
 }	

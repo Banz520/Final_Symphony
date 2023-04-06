@@ -42,7 +42,7 @@
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"sprAttack","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"sTommyLmanbrgAtk",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"charaDamage","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"2",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"charaDefense","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"0.4",},
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"sprHurt","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"[sTommyLmanbrgHurt]",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"sprHurt","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"sTommyLmanbrgHurt",},
   ],
   "parent": {
     "name": "PlayerCharas",

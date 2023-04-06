@@ -21,7 +21,7 @@ if(!global.gamePaused){
 			target.charaHP -= totalDamage;
 			CreateDamageNumber(target,totalDamage);
 			target.charaState = target.charaStateHurt;
-			show_debug_message("hit marker changin chara state to hurt");
+			
 			instance_destroy();
 		}
 	}
@@ -32,6 +32,7 @@ if(!global.gamePaused){
 		target.charaHP -= totalDamage;
 		CreateDamageNumber(target,totalDamage);
 		target.charaState = target.charaStateHurt;
+		
 		instance_destroy();
 	}
 }

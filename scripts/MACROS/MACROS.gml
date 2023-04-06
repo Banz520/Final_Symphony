@@ -19,7 +19,8 @@ function MACROS(){
 		ENEMY_ACT,
 		WAIT,
 		WIN,
-		DEFEAT
+		DEFEAT,
+		HURT
 		
 	}
 	

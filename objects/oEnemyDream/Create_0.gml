@@ -13,11 +13,6 @@ damageNumberYOffset = y-sprite_height;
 
 
 
-function EnemyStateWait(){
-		
-	sprite_index = sprIdle;
-	AnimateSprite();
-}
 
 function EnemyStateTurn(){
 		
@@ -40,44 +35,11 @@ function EnemyStateAttack(){
 	if(animationEnd)charaState = charaStateWait;
 }
 
-function EnemyStateHurt(){
-	
-	sprite_index = sprHurt;
-	AnimateSprite();
-	show_debug_message(localFrame);
-	//screen shake
-	
-	hitScreenShake = true;
-	if(hitScreenShake)ScreenShake(1,2);
-	hitScreenShake = false;
-	
-	//flash
-	flash = 0.5;
-	flashShader = shWhiteFlash;
-	
-	show_debug_message(animationEnd);
-	//change state
-	if(animationEnd){
-		charaState = charaStateWait;
-		show_debug_message("trans from state hurt 2 state wait");
-	}
-}
-
-function EnemyStateDead(){
-	
-	sprite_index = sprDead;
-	AnimateSprite();
-	if(animationEnd)instance_destroy();
-	
-}
-
 
 //Declare Character States
-charaStateWait = EnemyStateWait;
 charaStateTurn = EnemyStateTurn;
 charaStateAttack = EnemyStateAttack;
-charaStateHurt = EnemyStateHurt;
-charaStateDead = EnemyStateDead;
+
 
 
 charaState = charaStateWait;

@@ -21,12 +21,46 @@ damageNumberXOffset = -1;
 damageNumberYOffset = -1;
 
 
+function CharaStateHurt(){
+	
+	if(sprite_index != sprHurt){
+		sprite_index = sprHurt;
+		localFrame = 0;
+	}
+	AnimateSprite(0.5);
+		
+	//screen shake
+	hitScreenShake = true;
+	if(hitScreenShake)ScreenShake(1.5,2);
+	hitScreenShake = false;
+	
+	//flash
+	flash = 0.5;
+	flashShader = shWhiteFlash;
+		
+	//change state
+	if(animationEnd)charaState = charaStateWait;
+	
+}
+
+function CharaStateDead(){
+	
+	if(sprite_index != sprDead){
+		sprite_index = sprDead;
+		localFrame = 0;
+	}
+	AnimateSprite();
+	if(animationEnd)instance_destroy();
+	
+}
+
+
 //Declare Character States
 charaStateWait = -1;
 charaStateTurn = -1;
 charaStateAttack = -1;
-charaStateHurt = -1;
-charaStateDead = -1;
+charaStateHurt = CharaStateHurt;
+charaStateDead = CharaStateDead;
 charaStateHeal = -1;
 charaStateDefend = -1;
 charaStateSpecial = -1;

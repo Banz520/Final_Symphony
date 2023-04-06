@@ -16,11 +16,8 @@ levelButtonYScale = 2;
 levelSelectorList = [
 
 	["Lmanberg - FINAL SYMPHONY\nTommy vs Dream Duel",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundLmanberg,[oEnemyDream],[oTommyLmanberg],1],
-	["Manberg Festival part 1",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundManberg,[oEnemy,oEnemyDream,oEnemy,oEnemy],[oPlayer,oTommyLmanberg,oPlayer],0],
-	["Eggpire part 1",LEVELSELECT_SPRITE.RED_OUTLINE,sBackGroundEggpire,[oEnemy,oEnemy],[oPlayer],0],
-	["Pogtopia part 2",LEVELSELECT_SPRITE.RED_OUTLINE,sBackGroundLasNevadas,[oEnemy,oEnemy],[oPlayer],0],
-	["Las Nevadas part 1",LEVELSELECT_SPRITE.RED_OUTLINE,sBackGroundLasNevadas,[oEnemy],[oPlayer],0]
-
+	["Manberg Festival part 1",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundManberg,[oEnemy,oEnemyDream,oEnemy,oEnemyDream],[oTommyLmanberg,oTommyLmanberg],0],
+	
 ];
 
 levelSelectListLength = array_length(levelSelectorList);

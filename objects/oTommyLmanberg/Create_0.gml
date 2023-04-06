@@ -18,7 +18,7 @@ damageNumberYOffset = y-sprite_height;
 buttonXOffset = x;
 buttonYOffset = y-sprite_height*0.75;
 
-sprHurtListLength = array_length(sprHurt);
+//sprHurtListLength = array_length(sprHurt);
 
 
 function PlayerStateWait(){
@@ -29,42 +29,10 @@ function PlayerStateWait(){
 	//choose(sprHurt,sprHurt2);
 	//reset values
 	hitScreenShake = true;
-	currentSprHurt = sprHurt[(random_range(0,sprHurtListLength))];
+	//currentSprHurt = sprHurt[(random_range(0,sprHurtListLength))];
 		
 }
 
-function PlayerStateTurn(){
-	
-	sprite_index = sprIdle;
-	AnimateSprite();
-		
-	DeployPlayerActionMenu();
-		
-	var keyConfirmAction = keyboard_check_pressed(vk_space);
-	var keyCancelAction = keyboard_check_pressed(vk_tab);
-	keyConfirmPressedCount += keyConfirmAction-keyCancelAction;
-	if(keyConfirmPressedCount < 0)keyConfirmPressedCount = 0;
-		
-	switch(keyConfirmPressedCount){
-		case 0:{
-			buttonSelected = SelectButtonWithKeys(buttonActionList);
-			break;
-		}
-		case 1: {
-			if(buttonSelected == oButtonPlayerSpecial && global.battlePoints < charaSpecialActCost)keyConfirmPressedCount--;
-			if(buttonSelected == oButtonPlayerAttack || buttonSelected == oButtonPlayerSpecial)enemyTarget = SelectEnemyWithKeys();
-			else keyConfirmPressedCount++;
-			break;
-		}
-		case 2: {
-			if(buttonSelected == oButtonPlayerSpecial)global.battlePoints -= charaSpecialActCost;
-			buttonSelected.executeAction = true;
-			break;
-		}
-		default: break;
-	}
-	
-}
 
 function PlayerStateAttack(){
 	
@@ -74,6 +42,7 @@ function PlayerStateAttack(){
 	AnimateSprite();
 	
 	if(floor(localFrame) == 11 && !instance_exists(oLinearProyectile)) CreateHitLinearProyectile(enemyTarget,4,true,PROYECTILE_SPR.ARROW);
+	
 	if(animationEnd) charaState = charaStateWait;
 		
 }
@@ -115,45 +84,11 @@ function PlayerStateDefend(){
 	charaState = charaStateWait;
 }
 
-function PlayerStateHurt(){
-	
-	sprite_index = currentSprHurt;
-	AnimateSprite(1);
-	show_debug_message(localFrame);
-	
-	//screen shake
-	if(hitScreenShake) ScreenShake(2,4);	
-	hitScreenShake = false;
-	
-	//flash
-	flash = 0.5;
-	flashShader = shWhiteFlash;
-	
-	show_debug_message(animationEnd);
-	//change state
-	if(animationEnd){
-		charaState = charaStateWait;
-		show_debug_message("trans from state hurt 2 state wait");
-	}
-	
-}
-
-function PlayerStateDead(){
-	
-	sprite_index = sprDead;
-	AnimateSprite();
-	if(animationEnd)instance_destroy();
-	
-}
-
 
 
 //Declare Character States
 charaStateWait = PlayerStateWait;
-charaStateTurn = PlayerStateTurn;
 charaStateAttack = PlayerStateAttack;
-charaStateHurt = PlayerStateHurt;
-charaStateDead = PlayerStateDead;
 charaStateHeal = PlayerStateHeal;    
 charaStateDefend = PlayerStateDefend;
 charaStateSpecial = PlayerStateAttack;

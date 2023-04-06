@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "GameFunctions",
-    "path": "folders/Scripts/GameFunctions.yy",
+    "name": "Scripts",
+    "path": "folders/Scripts.yy",
   },
 }
