@@ -3,6 +3,7 @@
   "resourceVersion": "1.6",
   "name": "TurnBasedCombatRPG1",
   "resources": [
+    {"id":{"name":"sTubboLmanbrgIdle","path":"sprites/sTubboLmanbrgIdle/sTubboLmanbrgIdle.yy",},"order":0,},
     {"id":{"name":"sHitEffectStar","path":"sprites/sHitEffectStar/sHitEffectStar.yy",},"order":2,},
     {"id":{"name":"rLevelMenu","path":"rooms/rLevelMenu/rLevelMenu.yy",},"order":6,},
     {"id":{"name":"rAdventureTest","path":"rooms/rAdventureTest/rAdventureTest.yy",},"order":4,},
@@ -126,6 +127,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Dream","folderPath":"folders/Sprites/Characters/Dream.yy","order":6,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Enemies","folderPath":"folders/Sprites/Characters/Enemies.yy","order":3,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tommy Lmanberg","folderPath":"folders/Sprites/Characters/Tommy Lmanberg.yy","order":5,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tubbo Lmanbrg","folderPath":"folders/Sprites/Characters/Tubbo Lmanbrg.yy","order":7,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Wilbur Lmanberg","folderPath":"folders/Sprites/Characters/Wilbur Lmanberg.yy","order":4,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"GUI","folderPath":"folders/Sprites/GUI.yy","order":5,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ButtonActions","folderPath":"folders/Sprites/GUI/ButtonActions.yy","order":6,},
