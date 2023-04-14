@@ -38,13 +38,22 @@ function PlayerStateAttack(){
 	
 	DeletePlayerActionMenu();
 	
-	sprite_index = sprAttack;
+	if(sprite_index != sprAttack){
+		sprite_index = sprAttack;
+		CreateProyectileMeter();
+	}
 	AnimateSprite();
 	
-	if(floor(localFrame) == 11 && !instance_exists(oLinearProyectile)) CreateHitLinearProyectile(enemyTarget,4,true,PROYECTILE_SPR.ARROW);
+	if(floor(localFrame) == 10 && !performAttack)localFrame = 3;
 	
-	if(animationEnd) charaState = charaStateWait;
-		
+	if(performAttack && !instance_exists(oLinearProyectile)){
+		CreateHitLinearProyectile(enemyTarget,4,true,PROYECTILE_SPR.ARROW);
+		performAttack = false;
+		localFrame = 11;
+	}
+	
+	if(animationEnd)charaState = charaStateWait;
+	
 }
 
 function PlayerStateHeal(){

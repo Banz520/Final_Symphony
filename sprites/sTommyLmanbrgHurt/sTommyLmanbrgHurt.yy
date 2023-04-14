@@ -12,7 +12,7 @@
   "swfPrecision": 2.525,
   "bbox_left": 7,
   "bbox_right": 34,
-  "bbox_top": 3,
+  "bbox_top": 7,
   "bbox_bottom": 39,
   "HTile": false,
   "VTile": false,
@@ -68,7 +68,8 @@
     "eventStubScript": null,
   },
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"651b0265-2e87-4049-931b-e8d079a432a7","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 4 (2) (2)",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"efe4ca19-5c52-4b39-a8ea-7a3b8a66b0b4","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 4 (2) (2) (2)",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"651b0265-2e87-4049-931b-e8d079a432a7","visible":false,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 4 (2) (2)",},
   ],
   "nineSlice": null,
   "parent": {

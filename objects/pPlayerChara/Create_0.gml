@@ -4,10 +4,14 @@ event_inherited();
 //reset enemy selected
 enemySelected = 0;
 
+performAttack = false;
 
 function PlayerCharaStateTurn(){
 	
-	sprite_index = sprIdle;
+	if(sprite_index != sprIdle){
+		charaDamageMod = 1;
+		sprite_index = sprIdle;
+	}
 	AnimateSprite();
 		
 	DeployPlayerActionMenu();
@@ -88,5 +92,33 @@ function DeletePlayerActionMenu(){
 		if(instance_exists(buttonActionList[i])){
 			buttonActionList[i].deleteSelf = true;
 		}
+	}
+}
+
+function CreateProyectileMeter(){
+	
+	if(!instance_exists(oProyectileMeter)){
+		instance_create_layer(
+			x+other.sprite_width*0.65,
+			y-other.sprite_height*0.5,
+			layer_get_id("layerGUI"),
+			oProyectileMeter,
+			{parentChara: other.id}
+		);	
+	}
+}
+
+function CreateStrengthMeter(){
+	
+	if(!instance_exists(oStrengthMeter)){
+		
+		instance_create_layer(
+		x+other.sprite_width*0.35,
+		y-other.sprite_height*0.5,
+		layer_get_id("layerGUI"),
+		oStrengthMeter,
+		{parentChara: other.id}
+		);	
+		
 	}
 }

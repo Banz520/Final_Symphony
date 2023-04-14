@@ -33,7 +33,8 @@ function MACROS(){
 	
 	enum PROYECTILE_SPR{
 		FIREBALL,
-		ARROW
+		ARROW,
+		POTION
 		
 	}
 		

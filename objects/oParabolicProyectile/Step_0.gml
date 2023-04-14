@@ -1,7 +1,7 @@
 /// @description move to target
 if(!global.gamePaused){
 	
-	ParabollicMovement();
+	script_execute(parabollicMovement);
 }
 
 else speed = 0;

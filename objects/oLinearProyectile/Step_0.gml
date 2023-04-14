@@ -14,18 +14,11 @@ if(!global.gamePaused){
 	}
 	
 	
-	if(attackComesFromPlayer){
-		if(collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,target,true,true)) && (keyboard_check_pressed(vk_space)){
-			parentChara.CreateHitMarker(target,10,hitMarkSpr);
-			instance_destroy();
-		}
+	if(collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,target,true,true)){
+		parentChara.CreateHitMarker(target,10,hitMarkSpr,parentChara);
+		instance_destroy();
 	}
-	else{
-		if(collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,target,true,true)){
-			parentChara.CreateHitMarker(target,10,hitMarkSpr);
-			instance_destroy();
-		}
-	}
+
 }
 
 else speed = 0;

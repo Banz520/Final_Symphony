@@ -8,7 +8,7 @@ if(!global.gamePaused){
 		
 	}
 	else{
-		
+		charaDamage = charaDamageBase * charaDamageMod;
 		script_execute(charaState);
 		
 	}

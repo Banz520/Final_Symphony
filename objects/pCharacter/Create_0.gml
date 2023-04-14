@@ -1,5 +1,6 @@
 /// @description 
 
+charaDamage = charaDamageBase * charaDamageMod;
 maxcharaHP = charaHP;
 charaState = -1;
 
@@ -66,7 +67,7 @@ charaStateDefend = -1;
 charaStateSpecial = -1;
 
 
-function CreateHitMarker(targetToHit,dificulty = 0,spriteName,originDamage = other.charaDamage){
+function CreateHitMarker(targetToHit,dificulty = 0,spriteName,parentCharaid){
 	
 	if(instance_exists(targetToHit)){
 			
@@ -75,7 +76,7 @@ function CreateHitMarker(targetToHit,dificulty = 0,spriteName,originDamage = oth
 			targetToHit.y-targetToHit.sprite_height*0.5,
 			layer_get_id("layerGUI"),
 			oHitMarker,
-			{damage: originDamage,
+			{parentChara: parentCharaid,
 			target: targetToHit,
 			dificultySpeed: dificulty,
 			image_speed: 0,
@@ -85,13 +86,13 @@ function CreateHitMarker(targetToHit,dificulty = 0,spriteName,originDamage = oth
 	}
 }
 	
-function CreateHitProyectile(targetToHit,spd, proyectileSprite = 0){
+function CreateHitParabProyectile(targetToHit,spd,attackByPlayer, proyectileSprite = 0){
 	
 	if(instance_exists(targetToHit)){
 			
 		instance_create_depth(
 			x,
-			y-other.sprite_height*0.4,
+			y-other.sprite_height*0.6,
 			depth-10,
 			oParabolicProyectile,
 			{charaDamage: other.charaDamage,
@@ -99,7 +100,8 @@ function CreateHitProyectile(targetToHit,spd, proyectileSprite = 0){
 			vel: spd,
 			parentChara: other.id,
 			image_speed:0,
-			image_index: proyectileSprite
+			image_index: proyectileSprite,
+			attackComesFromPlayer: attackByPlayer
 			}
 		);
 	}

@@ -30,7 +30,7 @@ function EnemyStateAttack(){
 	AnimateSprite();
 	
 	var playerCharaTarget = oBattleManager.playerCharasOnBattleList[|random_range(0,global.playerCharasOnBattle)];	
-	if(floor(localFrame) == 6 && !instance_exists(oHitMarker))CreateHitMarker(playerCharaTarget,1,sHitEffectSlash);
+	if(floor(localFrame) == 6 && !instance_exists(oHitMarker))CreateHitMarker(playerCharaTarget,1,sHitEffectSlash,id);
 	
 	if(animationEnd)charaState = charaStateWait;
 }

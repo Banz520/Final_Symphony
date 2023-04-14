@@ -17,7 +17,8 @@ if(!global.gamePaused){
 				if(global.battlePoints < 10)global.battlePoints++;
 			}
 			//esto lo deberia de cambiar
-			totalDamage = (damage - damage*defense);
+			totalDamage = parentChara.charaDamageBase * parentChara.charaDamageMod;
+			totalDamage -= totalDamage*defense;
 			target.charaHP -= totalDamage;
 			CreateDamageNumber(target,totalDamage);
 			target.charaState = target.charaStateHurt;
@@ -28,7 +29,8 @@ if(!global.gamePaused){
 	else{
 		//esto lo deberia de cambiar
 		defense = 0;
-		totalDamage = (damage - damage*defense);
+		totalDamage = parentChara.charaDamageBase * parentChara.charaDamageMod;
+		totalDamage -= totalDamage*defense;
 		target.charaHP -= totalDamage;
 		CreateDamageNumber(target,totalDamage);
 		target.charaState = target.charaStateHurt;
