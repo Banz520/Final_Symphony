@@ -80,6 +80,6 @@
   "nineSlice": null,
   "parent": {
     "name": "Tubbo Lmanbrg",
-    "path": "folders/Sprites/Characters/Tubbo Lmanbrg.yy",
+    "path": "folders/Sprites/Characters/Lmanbrg/Tubbo Lmanbrg.yy",
   },
 }

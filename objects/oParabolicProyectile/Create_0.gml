@@ -68,7 +68,11 @@ function ParabollicRightLeftMovement(){
 		x = target.x;
 		y = target.y;
 		
-		parentChara.CreateHitMarker(target,0.4,hitMarkSpr,parentChara);
+		for(var i = 0; i < global.playerCharasOnBattle; i++){
+			
+			parentChara.CreateHitMarker(oBattleManager.playerCharasOnBattleList[|i],0.4,hitMarkSpr,parentChara);
+		}
+		
 		instance_destroy();
 	}
 	

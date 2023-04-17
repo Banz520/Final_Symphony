@@ -71,11 +71,12 @@
   },
   "layers": [
     {"resourceType":"GMImageFolderLayer","resourceVersion":"1.0","name":"9ef3929a-a5cf-4fbd-b32c-e4a4945e3fec","layers":[
-        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"98c47613-669a-4f67-b810-ea7a821d2792","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"flag",},
+        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"98c47613-669a-4f67-b810-ea7a821d2792","visible":true,"isLocked":true,"blendMode":0,"opacity":100.0,"displayName":"flag",},
         {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"5a3d1052-3c5b-469b-9f64-c80571871538","visible":true,"isLocked":true,"blendMode":3,"opacity":20.0,"displayName":"skybox",},
-        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"8324a666-8ac2-4f4f-b502-48acbcb24d8d","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"dogo",},
+        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"8324a666-8ac2-4f4f-b502-48acbcb24d8d","visible":true,"isLocked":true,"blendMode":0,"opacity":100.0,"displayName":"dogo",},
         {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"384b49d5-40b7-46c9-b6dc-7b5f9d06c33e","visible":true,"isLocked":true,"blendMode":0,"opacity":100.0,"displayName":"dogofire",},
-        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"eb9224ca-ab41-4a86-ae9e-8b4ac5aeca5f","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"ALL",},
+        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"5b722b99-ba45-4da9-887c-a79baf772fb5","visible":true,"isLocked":true,"blendMode":0,"opacity":100.0,"displayName":"Layer 1",},
+        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"efee7bfc-3ae7-4f5b-a25b-9b888a9a9a20","visible":false,"isLocked":true,"blendMode":0,"opacity":100.0,"displayName":"Layer 1 (2) (2)",},
         {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"9d91d15e-a667-4c54-902f-7a60dbf5a7f1","visible":false,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"front grass",},
         {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"e147cad4-5d3b-4d59-93ab-ddf28390da6a","visible":false,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"camarvan",},
         {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"203b9b5f-7b8d-41ec-9b3d-de0e93c46a44","visible":false,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"back grass",},

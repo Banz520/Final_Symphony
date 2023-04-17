@@ -11,6 +11,8 @@ function MACROS(){
 	#macro OUT 0
 	#macro IN 1
 	
+	#macro MAX_BATTLEPOINTS 20
+	
 	enum COMBAT_STATE{
 		
 		PLAYER_TURN,

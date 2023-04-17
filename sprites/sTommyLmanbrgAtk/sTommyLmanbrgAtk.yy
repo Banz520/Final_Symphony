@@ -98,6 +98,6 @@
   "nineSlice": null,
   "parent": {
     "name": "Tommy Lmanberg",
-    "path": "folders/Sprites/Characters/Tommy Lmanberg.yy",
+    "path": "folders/Sprites/Characters/Lmanbrg/Tommy Lmanberg.yy",
   },
 }

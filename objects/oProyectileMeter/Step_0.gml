@@ -2,8 +2,9 @@
 if(!global.gamePaused){	
 	var shotKey = keyboard_check_pressed(vk_space);
 	if(shotKey){
-		if(floor(image_index) > 7 && floor(image_index) < 11){
-	
+		if(floor(image_index) >= 7 && floor(image_index) <= 11){
+			
+			global.battlePoints++;
 			//play sound
 			parentChara.charaDamageMod = 1.5;	
 		}

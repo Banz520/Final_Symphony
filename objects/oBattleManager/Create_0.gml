@@ -148,7 +148,7 @@ function SetTurns(){
 				else{
 						
 					enemyOnTurnCount = 0;
-					if(global.battlePoints < 10)global.battlePoints++;
+					if(global.battlePoints < MAX_BATTLEPOINTS)global.battlePoints += 3;
 					global.combatState = COMBAT_STATE.WAIT;
 				}
 			}

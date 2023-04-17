@@ -15,9 +15,9 @@ levelButtonYScale = 2;
 //Add here each level configuration
 levelSelectorList = [
 
-	["Lmanberg - Ode to Lmanberg\nIndependance War",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundLmanbergDay,[oEnemyDream,oEnemyDream],[oTommyLmanberg,oTubboLmanberg],1],
+	["Lmanberg - Ode to Lmanberg\nIndependance War",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundLmanbergDay,[oEnemyDream,oEnemySapnap,oEnemyGeorge],[oWilburLmanberg,oTommyLmanberg,oTubboLmanberg,oEretLmanberg],0],
 	["Lmanberg - FINAL SYMPHONY\nTommy vs Dream Duel",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundLmanberg,[oEnemyDream],[oTommyLmanberg],1],
-	["Manberg Festival part 1",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundManberg,[oEnemy,oEnemyDream,oEnemy,oEnemyDream],[oTommyLmanberg,oTommyLmanberg],0],
+	["Manberg Festival part 1",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundManberg,[oEnemyDream,oEnemyGeorge],[oTommyLmanberg,oWilburLmanberg],1],
 	
 ];
 

@@ -4,6 +4,7 @@ if(!global.gamePaused){
 	if(shotKey){
 	
 		var strength = image_index;
+		if(strength >= 1) global.battlePoints++;
 		//play sound
 		parentChara.charaDamageMod = strength/10;	
 	

@@ -1,48 +1,10 @@
-// Inherit the parent event
+//@desc Basic Chara functs
 event_inherited();
 
 //reset enemy selected
 enemySelected = 0;
 
 performAttack = false;
-
-function PlayerCharaStateTurn(){
-	
-	if(sprite_index != sprIdle){
-		charaDamageMod = 1;
-		sprite_index = sprIdle;
-	}
-	AnimateSprite();
-		
-	DeployPlayerActionMenu();
-		
-	var keyConfirmAction = keyboard_check_pressed(vk_space);
-	var keyCancelAction = keyboard_check_pressed(vk_tab);
-	keyConfirmPressedCount += keyConfirmAction-keyCancelAction;
-	if(keyConfirmPressedCount < 0)keyConfirmPressedCount = 0;
-		
-	switch(keyConfirmPressedCount){
-		case 0:{
-			buttonSelected = SelectButtonWithKeys(buttonActionList);
-			break;
-		}
-		case 1: {
-			if(buttonSelected == oButtonPlayerSpecial && global.battlePoints < charaSpecialActCost)keyConfirmPressedCount--;
-			if(buttonSelected == oButtonPlayerAttack || buttonSelected == oButtonPlayerSpecial)enemyTarget = SelectEnemyWithKeys();
-			else keyConfirmPressedCount++;
-			break;
-		}
-		case 2: {
-			if(buttonSelected == oButtonPlayerSpecial)global.battlePoints -= charaSpecialActCost;
-			buttonSelected.executeAction = true;
-			break;
-		}
-		default: break;
-	}
-	
-}
-
-charaStateTurn = PlayerCharaStateTurn;
 
 function SelectEnemyWithKeys(){
 	
@@ -122,3 +84,65 @@ function CreateStrengthMeter(){
 		
 	}
 }
+	
+function PlayerCharaStateTurn(){
+	
+	if(sprite_index != sprIdle){
+		charaDamageMod = 1;
+		sprite_index = sprIdle;
+	}
+	AnimateSprite();
+		
+	DeployPlayerActionMenu();
+		
+	var keyConfirmAction = keyboard_check_pressed(vk_space);
+	var keyCancelAction = keyboard_check_pressed(vk_tab);
+	keyConfirmPressedCount += keyConfirmAction-keyCancelAction;
+	if(keyConfirmPressedCount < 0)keyConfirmPressedCount = 0;
+		
+	switch(keyConfirmPressedCount){
+		case 0:{
+			buttonSelected = SelectButtonWithKeys(buttonActionList);
+			break;
+		}
+		case 1: {
+			if(buttonSelected == oButtonPlayerSpecial && global.battlePoints < charaSpecialActCost || buttonSelected == oButtonPlayerAttack && global.battlePoints < charaAttackCost)keyConfirmPressedCount--;
+			if(buttonSelected == oButtonPlayerAttack || buttonSelected == oButtonPlayerSpecial)enemyTarget = SelectEnemyWithKeys();
+			else keyConfirmPressedCount++;
+			break;
+		}
+		case 2: {
+			if(buttonSelected == oButtonPlayerSpecial)global.battlePoints -= charaSpecialActCost;
+			if(buttonSelected == oButtonPlayerAttack)global.battlePoints -= charaAttackCost;
+			buttonSelected.executeAction = true;
+			break;
+		}
+		default: break;
+	}
+	
+}
+
+function PlayerShotAttack(targetToShot,proyectileSprite,proyectileSpeed,animLoopLastFrame,animLoopFirstFrame){
+	
+	DeletePlayerActionMenu();
+	
+	if(sprite_index != sprAttack){
+		sprite_index = sprAttack;
+		CreateProyectileMeter();
+	}
+	
+	AnimateSprite();
+	
+	if(floor(localFrame) == animLoopLastFrame && !performAttack)localFrame = animLoopFirstFrame;
+	
+	if(performAttack && !instance_exists(oLinearProyectile)){
+		CreateHitLinearProyectile(targetToShot,proyectileSpeed,true,proyectileSprite);
+		performAttack = false;
+		localFrame = animLoopLastFrame+1;
+	}
+	
+	if(animationEnd)charaState = charaStateWait;
+	
+}
+	
+charaStateTurn = PlayerCharaStateTurn;

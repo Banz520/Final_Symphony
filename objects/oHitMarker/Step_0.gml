@@ -14,7 +14,7 @@ if(!global.gamePaused){
 			else {
 				image_speed = 0;
 				defense = target.charaDefense;
-				if(global.battlePoints < 10)global.battlePoints++;
+				if(global.battlePoints < MAX_BATTLEPOINTS)global.battlePoints++;
 			}
 			//esto lo deberia de cambiar
 			totalDamage = parentChara.charaDamageBase * parentChara.charaDamageMod;
