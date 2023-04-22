@@ -89,8 +89,17 @@ charaStateDefend = PlayerStateDefend;
 charaStateSpecial = PlayerStateAttack;
 
 
-buttonActionList = [oButtonPlayerAttack,oButtonPlayerDefend,oButtonPlayerSpecial];
+buttonActionList = [
+	[oButtonPlayerAttack,"Shot the selected enemy dealing\n"+string(charaDamageBase)+" points of damage!\nCost: "+ string(charaAttackCost) + " Chaos Points"],
+	[oButtonPlayerDefend,"Defend incoming attacks to save wasting\nchaos points"],
+	[oButtonPlayerSpecial,"TRADE DEFICIT: Lowers the character\nhealth to rise the team defense\nCost: "+ string(charaSpecialActCost) + " Chaos Points"]
+];
 
+buttonList = [-1];
+for(var i = 0; i < array_length(buttonActionList); i++){
+	buttonList[i] = buttonActionList[i][0];	
+}
+	
 charaState = charaStateWait;
 global.combatState = COMBAT_STATE.PLAYER_TURN;
 

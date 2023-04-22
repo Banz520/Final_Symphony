@@ -37,22 +37,7 @@ function PlayerStateWait(){
 
 function PlayerStateAttack(){
 	
-	DeletePlayerActionMenu();
-	
-	if(sprite_index != sprAttack){
-		sprite_index = sprAttack;
-		CreateStrengthMeter();
-	}
-	
-	AnimateSprite();
-	if(floor(localFrame) == 9 && !performAttack)localFrame = 4;
-	
-	if(performAttack && !instance_exists(oParabolicProyectile)){
-		CreateHitParabProyectile(enemyTarget,4,true,PROYECTILE_SPR.POTION);
-		performAttack = false;
-		localFrame = 11
-	}
-	if(animationEnd) charaState = charaStateWait;
+	PlayerSplashAttack(enemyTarget,PROYECTILE_SPR.POTION,4,9,3);
 		
 }
 
@@ -103,7 +88,17 @@ charaStateDefend = PlayerStateDefend;
 charaStateSpecial = PlayerStateAttack;
 
 
-buttonActionList = [oButtonPlayerAttack,oButtonPlayerDefend,oButtonPlayerSpecial];
+buttonActionList = [
+	[oButtonPlayerAttack,"Attack all enemies dealing\n"+string(charaDamageBase)+" points of damage!\nCost: "+ string(charaAttackCost) + " Chaos Points"],
+	[oButtonPlayerDefend,"Defend incoming attacks to save\nwasting chaos points"],
+	[oButtonPlayerSpecial,"Eret Special\nCost: "+ string(charaSpecialActCost) + " Chaos Points"]
+];
+
+buttonList = [-1];
+for(var i = 0; i < array_length(buttonActionList); i++){
+	buttonList[i] = buttonActionList[i][0];	
+}
+	
 
 charaState = charaStateWait;
 global.combatState = COMBAT_STATE.PLAYER_TURN;

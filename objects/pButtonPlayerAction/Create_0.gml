@@ -2,8 +2,6 @@ buttonSetAction = buttonPlayerCharaParent.charaStateWait;
 
 descriptionBox = noone;
 
-actionDescription = " ";
-
 deleteSelf = false;
 
 selected = false;

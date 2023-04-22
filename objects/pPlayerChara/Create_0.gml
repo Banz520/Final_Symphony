@@ -34,15 +34,19 @@ function DeployPlayerActionMenu(){
 	
 	//Spawn Button Actions
 	spawnAngle = -110;
-	for(var i = 0; i < array_length(buttonActionList);i++){
+	var buttonActionListLength = array_length(buttonActionList)
+	for(var i = 0; i < buttonActionListLength;i++){
 		
-		if(!instance_exists(buttonActionList[i])){
+		if(!instance_exists(buttonActionList[i][0])){
 			instance_create_layer(
 				floor(buttonXOffset+lengthdir_x(20,spawnAngle)),
 				floor(buttonYOffset-lengthdir_y(20,spawnAngle)),
 				layer_get_id("layerGUI"),
-				buttonActionList[i],
-				{buttonPlayerCharaParent: other.id});
+				buttonActionList[i][0],
+				{	
+					actionDescription: buttonActionList[i][1],
+					buttonPlayerCharaParent: id
+				});
 			}
 		spawnAngle += 50;
 	}
@@ -51,8 +55,8 @@ function DeployPlayerActionMenu(){
 function DeletePlayerActionMenu(){
 	
 	for(var i = 0; i < array_length(buttonActionList);i++){
-		if(instance_exists(buttonActionList[i])){
-			buttonActionList[i].deleteSelf = true;
+		if(instance_exists(buttonActionList[i][0])){
+			buttonActionList[i][0].deleteSelf = true;
 		}
 	}
 }
@@ -84,7 +88,8 @@ function CreateStrengthMeter(){
 		
 	}
 }
-	
+
+		
 function PlayerCharaStateTurn(){
 	
 	if(sprite_index != sprIdle){
@@ -102,7 +107,8 @@ function PlayerCharaStateTurn(){
 		
 	switch(keyConfirmPressedCount){
 		case 0:{
-			buttonSelected = SelectButtonWithKeys(buttonActionList);
+			
+			buttonSelected = SelectButtonWithKeys(buttonList);
 			break;
 		}
 		case 1: {
@@ -145,4 +151,27 @@ function PlayerShotAttack(targetToShot,proyectileSprite,proyectileSpeed,animLoop
 	
 }
 	
+function PlayerSplashAttack(targetToThrow,proyectileSprite,proyectileSpeed,animLoopLastFrame,animLoopFirstFrame){
+	
+	
+	DeletePlayerActionMenu();
+	
+	if(sprite_index != sprAttack){
+		sprite_index = sprAttack;
+		CreateStrengthMeter();
+	}
+	
+	AnimateSprite();
+	if(floor(localFrame) == animLoopLastFrame && !performAttack)localFrame = animLoopFirstFrame;
+	
+	if(performAttack && !instance_exists(oParabolicProyectile)){
+		CreateHitParabProyectile(targetToThrow,proyectileSpeed,true,proyectileSprite);
+		performAttack = false;
+		localFrame = animLoopLastFrame+1;
+	}
+	if(animationEnd) charaState = charaStateWait;
+		
+	
+}
+
 charaStateTurn = PlayerCharaStateTurn;
