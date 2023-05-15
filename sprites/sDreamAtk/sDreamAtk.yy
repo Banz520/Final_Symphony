@@ -98,6 +98,6 @@
   "nineSlice": null,
   "parent": {
     "name": "Dream",
-    "path": "folders/Sprites/Characters/Dream.yy",
+    "path": "folders/Sprites/Characters/Dsmp/Dream.yy",
   },
 }

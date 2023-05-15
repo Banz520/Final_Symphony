@@ -106,7 +106,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "VFX",
-    "path": "folders/Sprites/GUI/VFX.yy",
+    "name": "HitFX",
+    "path": "folders/Sprites/GUI/VFX/HitFX.yy",
   },
 }

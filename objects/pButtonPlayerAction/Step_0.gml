@@ -25,7 +25,7 @@ if(!global.gamePaused){
 					xscaleRate: 0.5,
 					imageHeight: RES_HEIGHT*0.25,
 					showDesc: false,
-					font: fPixelTextMini,
+					font: fPixelTextMiniMicro,
 					textBoxWidth:RES_WIDTH*0.5
 					
 				});

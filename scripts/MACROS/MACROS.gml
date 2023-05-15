@@ -6,12 +6,35 @@ function MACROS(){
 
 	#macro RES_WIDTH 320
 	#macro RES_HEIGHT 180
+
+	#macro UI_XSCALE 4
+	#macro UI_YSCALE 4
 	
-	#macro TRANSITION_SPEED 0.02
+	#macro TRANSITION_SPEED 0.01
 	#macro OUT 0
 	#macro IN 1
 	
 	#macro MAX_BATTLEPOINTS 20
+	
+	#macro BUFFBIG 0.33
+	#macro BUFFMID 0.25
+	#macro BUFFSMALL 0.12
+	
+	enum HP{
+		
+		HIGH = 50,
+		MID = 42,
+		LOW = 35
+		
+	}
+	
+	enum DMG{
+		
+		HIGH = 8,
+		MID = 5,
+		LOW = 3
+		
+	}
 	
 	enum COMBAT_STATE{
 		
@@ -22,8 +45,7 @@ function MACROS(){
 		WAIT,
 		WIN,
 		DEFEAT,
-		HURT
-		
+	
 	}
 	
 	enum LEVELSELECT_SPRITE{

@@ -61,4 +61,32 @@ añadir los sprites de ataque de cada quien
 character will be split into 3 for their stats, these can be atack dmg high, low or med and also for health, these will be an enum that will be multiplied by the difficulty
 no chara can have two high stats or two low stats to make balanced , with some exceptions, now that i see using an denum woudlnt hel´p  i need to use a map o just the numbers
 
+
+
+Poner numeros a las barras de vida
+explicar el sistema de defensa
+cambiar el simbolo para los puntos de caos, que se vea mas visual y mas contraste en el numero
+quiza una dinamita que se acorte la mecha
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 */
+
+

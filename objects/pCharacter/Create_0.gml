@@ -1,8 +1,11 @@
 /// @description 
 
 charaDamage = charaDamageBase * charaDamageMod;
-maxcharaHP = charaHP;
+charaHP = maxcharaHP;
 charaState = -1;
+charaDefenseMod = 1;
+charaDefenseBase = charaDefense;
+charaBuffDuration = 0;
 
 flash = 0;
 flashDecrease = 0.2;
@@ -15,11 +18,27 @@ localFrame = 0;
 
 
 //GUI Set Up
-healthBarXOffset = -1;
-healthBarYOffset = -1;
 
-damageNumberXOffset = -1;
-damageNumberYOffset = -1;
+damageNumberXOffset = x+6;
+damageNumberYOffset = y-sprite_height;
+
+healthBarXOffset = round(x-sprite_get_width(sHealthBar)*0.5);
+healthBarYOffset = round(y+4);
+
+healthNumberX = healthBarXOffset + 7;
+healthNumberY = healthBarYOffset + 2.25;
+
+healthText = instance_create_layer(
+				healthNumberX,
+				healthNumberY,
+				layer_get_id("layerGUI"),
+				oText,
+				{
+					textToDraw: string(charaHP),
+					textColor: c_black,
+					textFont: fPixelTextMiniMicro
+				}
+			);
 
 
 function CharaStateHurt(){
@@ -146,5 +165,16 @@ function DrawHealthBar(maxHealth,currentHealth){
 		image_blend,
 		image_alpha
 	);
+	draw_sprite(sHealthBar,2,healthBarXOffset-5,healthBarYOffset);
+	
+	
+	
+	draw_set_font(fPixelTextMini);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	
+	if(charaHP <= maxcharaHP/3.5)healthText.textColor = c_white;
+	else healthText.textColor = c_black;
+	healthText.textToDraw = charaHP;
 	
 }

@@ -1,12 +1,14 @@
 	/// @description Get Input on shot 
 if(!global.gamePaused){
-	var shotKey = keyboard_check_pressed(vk_space);
+	if(global.combatState != COMBAT_STATE.PLAYER_ACT)instance_destroy();
+	
+	var shotKey = global.keyContinue;
 	if(shotKey){
 	
 		var strength = image_index;
-		if(strength >= 1) global.battlePoints++;
+		if(strength >= 1) global.battlePoints += global.battlePointsForPerfectAct;
 		//play sound
-		parentChara.charaDamageMod = strength/10;	
+		parentChara.charaDamageMod += strength/10;	
 	
 		image_speed = 0;
 		parentChara.performAttack = true;

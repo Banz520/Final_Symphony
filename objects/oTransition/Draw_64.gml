@@ -7,9 +7,9 @@ switch type{
 	case TRANS_TYPE.CURTAIN: {
 	
 		draw_set_color(c_black);
-		draw_rectangle(0,0,width,percent*(heightHalf+50),false);
+		draw_rectangle(0,0,width,percent*(height),false);
 		//dibujara un rectangulo negro desde la parte superior izquierda de la pantalla hasta el extremo derecho y lo ira bajando
-		draw_rectangle(0,height,width,height-(percent*heightHalf),false);
+		draw_rectangle(0,height,width,height-(percent*height),false);
 	
 		break;
 	}

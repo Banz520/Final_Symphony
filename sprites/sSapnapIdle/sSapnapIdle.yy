@@ -77,6 +77,6 @@
   "nineSlice": null,
   "parent": {
     "name": "Sapnap",
-    "path": "folders/Sprites/Characters/Sapnap.yy",
+    "path": "folders/Sprites/Characters/Dsmp/Sapnap.yy",
   },
 }

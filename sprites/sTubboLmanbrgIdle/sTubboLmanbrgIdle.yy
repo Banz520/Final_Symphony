@@ -80,10 +80,12 @@
   "layers": [
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"1d48b1de-2894-4cdd-ba3f-230443b49dfa","visible":false,"isLocked":false,"blendMode":0,"opacity":73.0,"displayName":"Layer 1 (2)",},
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"b6c04468-f6ce-4ec3-a6ad-dbcca7940c93","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1",},
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"72e8de6f-d32c-40a0-ac40-3e3c8232baa9","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"HEAD",},
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"e828ef18-7727-43aa-9b91-4a7d0e21c83c","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"HANDS",},
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"4101fffd-7aa2-4c6b-8d01-691510ec1789","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"LEGS",},
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"b4168762-3a06-4b14-84fc-11134a610e5d","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"TORSO",},
+    {"resourceType":"GMImageFolderLayer","resourceVersion":"1.0","name":"6caff9be-46c8-45ba-8372-88c92911516d","layers":[
+        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"72e8de6f-d32c-40a0-ac40-3e3c8232baa9","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"HEAD",},
+        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"e828ef18-7727-43aa-9b91-4a7d0e21c83c","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"HANDS",},
+        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"4101fffd-7aa2-4c6b-8d01-691510ec1789","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"LEGS",},
+        {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"b4168762-3a06-4b14-84fc-11134a610e5d","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"TORSO",},
+      ],"visible":true,"isLocked":true,"blendMode":0,"opacity":100.0,"displayName":"Layer Group 1",},
   ],
   "nineSlice": null,
   "parent": {

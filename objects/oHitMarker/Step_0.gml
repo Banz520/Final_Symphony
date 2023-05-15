@@ -1,7 +1,9 @@
 /// @description Check for input to negate damage
 if(!global.gamePaused){
-	var blockKey = keyboard_check_pressed(vk_space);
-
+	var blockKey = global.keyContinue;
+	var totalDamage = parentChara.charaDamage;
+	var defense = target.charaDefense-1;
+	
 	AnimateSprite(dificultySpeed);
 
 	if(animationEnd == false){
@@ -9,16 +11,16 @@ if(!global.gamePaused){
 	
 			if(image_index < perfectFrame-1){
 				image_speed = 0;
-				defense = 0;
 			}
 			else {
 				image_speed = 0;
-				defense = target.charaDefense;
-				if(global.battlePoints < MAX_BATTLEPOINTS)global.battlePoints++;
+				defense += BUFFMID;
+				if(global.battlePoints < MAX_BATTLEPOINTS)global.battlePoints += global.battlePointsForPerfectAct;
 			}
-			//esto lo deberia de cambiar
-			totalDamage = parentChara.charaDamageBase * parentChara.charaDamageMod;
-			totalDamage -= totalDamage*defense;
+			
+			//Hurt Chara
+			totalDamage -= parentChara.charaDamage*defense;
+			totalDamage = max(1,floor(totalDamage));
 			target.charaHP -= totalDamage;
 			CreateDamageNumber(target,totalDamage);
 			target.charaState = target.charaStateHurt;
@@ -27,10 +29,10 @@ if(!global.gamePaused){
 		}
 	}
 	else{
-		//esto lo deberia de cambiar
-		defense = 0;
-		totalDamage = parentChara.charaDamageBase * parentChara.charaDamageMod;
-		totalDamage -= totalDamage*defense;
+		
+		//Hurt Chara
+		totalDamage -= parentChara.charaDamage*defense;
+		totalDamage = max(1,floor(totalDamage));
 		target.charaHP -= totalDamage;
 		CreateDamageNumber(target,totalDamage);
 		target.charaState = target.charaStateHurt;

@@ -1,5 +1,5 @@
 
-function RoomTransition(transType,transTargetRoom){
+function RoomTransition(transType = TRANS_TYPE.FADE,transTargetRoom = rBattle){
 
 	if(!instance_exists(oTransition)){
 		
@@ -45,8 +45,8 @@ function SelectButtonWithKeys(buttonList){
 	
 	
 	//Select action to perform
-		var keySelectUp = (keyboard_check_pressed(ord("W")) || keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("A")) || keyboard_check_pressed(vk_left))*-1 ;
-		var keySelectDown = (keyboard_check_pressed(ord("S")) || keyboard_check_pressed(vk_down)) || (keyboard_check_pressed(ord("D")) || keyboard_check_pressed(vk_right));
+		var keySelectUp = (global.keyPrevLeft || global.keyNextUp)*-1 ;
+		var keySelectDown = (global.keyNextRight|| global.keyPrevDown);
 			
 		buttonList[actionSelected].selected = true;
 		var lastActionSelected = actionSelected;

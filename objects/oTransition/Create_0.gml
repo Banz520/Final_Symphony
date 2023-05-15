@@ -1,5 +1,4 @@
-/// @description Insert description here
-// You can write your code in this editor
+/// @description Transtypes
 
 
 enum TRANS_TYPE{
@@ -11,9 +10,9 @@ enum TRANS_TYPE{
 }
 
 
-width = RES_WIDTH*2;
-height = RES_HEIGHT*2;
-heightHalf = height * 0.5;
+width = RES_WIDTH * UI_XSCALE;
+height = RES_HEIGHT * UI_YSCALE;
+//heightHalf = height * 0.5;
 percent = 0;
 leading = OUT;
 

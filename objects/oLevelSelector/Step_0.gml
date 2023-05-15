@@ -10,7 +10,7 @@ if(!global.gamePaused){
 		x = xPosScaled;
 		y = yPosScaled;
 	
-		var gotoLevelKey = keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter);
+		var gotoLevelKey = global.keyContinue || keyboard_check_pressed(vk_enter);
 	
 		if(gotoLevelKey){
 		
@@ -18,8 +18,9 @@ if(!global.gamePaused){
 			global.battlePlayerCharaSpawnList = levelPlayerCharasListCopy;
 			global.battleBackgroundSprite = levelBackgroundSprite;
 			global.spawnDistance = levelSpawnDistance;
-
-			RoomTransition(TRANS_TYPE.CURTAIN,rBattle);
+			global.comic = levelComic;
+		
+			RoomTransition(TRANS_TYPE.CURTAIN,rComic);
 		}
 	
 	}

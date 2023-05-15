@@ -2,18 +2,6 @@
 // Inherit the parent event
 event_inherited();
 
-image_xscale = -1;
-
-//GUI Set Up
-healthBarXOffset = x-sprite_get_width(sHealthBar)*0.5;
-healthBarYOffset = y+4;
-
-damageNumberXOffset = x+6;
-damageNumberYOffset = y-sprite_height;
-
-
-
-
 function EnemyStateTurn(){
 		
 	sprite_index = sprIdle;

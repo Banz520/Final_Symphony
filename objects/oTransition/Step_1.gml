@@ -5,7 +5,7 @@ if(leading == OUT){
 	
 	percent = min(1, percent + TRANSITION_SPEED);
 	if(percent >= 1){//Si la pantalla ya se oscurecio
-		
+
 		room_goto(target);
 		leading = IN;
 		

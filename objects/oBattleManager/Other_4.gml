@@ -10,8 +10,8 @@ ds_map_add(perfectFrames, sHitEffectStar, 14);
 ds_map_add(perfectFrames,sHitEffectSlash,10);
 //Proyectiles
 ds_map_add(perfectFrames, sHitEffectShine, 1);
-ds_map_add(perfectFrames,sHitEffectSplash,1);
-ds_map_add(perfectFrames,sHitEffectFire,1);
+ds_map_add(perfectFrames,sHitEffectSplash,100);
+ds_map_add(perfectFrames,sHitEffectFire,100);
 
 hitMarkSprList = ds_map_create();
 
@@ -26,9 +26,9 @@ layer_background_sprite(battleBackground, global.battleBackgroundSprite);
 CreateEnemiesFromList();
 CreatePlayerCharasFromList();
 
-global.battlePoints = 3 + global.playerCharasOnBattle;
+global.battlePoints = battlePointsInit + global.playerCharasOnBattle;
 
-playerCharaOnTurnCount = 0
+playerCharaTurns = global.playerCharasOnBattle-1;
 enemyOnTurnCount = 0;
 
 
