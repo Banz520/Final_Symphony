@@ -32,10 +32,9 @@
   ],
   "properties": [],
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"charaHP","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"50",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":null,"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"50",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"sprIdle","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"sWilburLmanbrgIdle",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"sprDead","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"sTubboLmanbrgHurt",},
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"sprAttack","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"sTubboLmanbrgAtk",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"charaDamageBase","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"5",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"sprHurt","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"sTubboLmanbrgHurt",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"charaSpecialActCost","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"10",},
@@ -48,6 +47,7 @@
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"sprDead","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"sTubboLmanbrgHurt",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"charaSpecialActCost","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"7",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"maxcharaHP","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"HP.HIGH",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"charaName","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"Wilbur Lmanberg",},
   ],
   "parent": {
     "name": "PlayerCharas",

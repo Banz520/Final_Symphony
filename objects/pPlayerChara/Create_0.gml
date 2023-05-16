@@ -1,6 +1,8 @@
 //@desc Basic Chara functs
 event_inherited();
 
+playerCharaIsHover = false;
+
 buttonXOffset = x;
 buttonYOffset = y-sprite_height*0.75;
 
@@ -15,6 +17,8 @@ performAttack = false;
 playerChooseTargetToAtk = true;
 playerChooseTargetToHeal = true;
 playerChooseTargetToSpecial = true;
+
+playerCharaDescriptionBox = noone;
 
 buttonActionList = [-1];
 
@@ -207,7 +211,8 @@ function PlayerCharaStateTurn(){
 		sprite_index = sprIdle;
 	}
 	AnimateSprite();
-		
+	
+	if(instance_exists(playerCharaDescriptionBox))instance_destroy(playerCharaDescriptionBox);
 	DeployPlayerActionMenu();
 		
 	var keyConfirmAction = global.keyContinue;
@@ -256,6 +261,22 @@ function PlayerStateWait(){
 	//reset values
 	hitScreenShake = true;
 	//currentSprHurt = sprHurt[(random_range(0,sprHurtListLength))];
+	if(playerCharaIsHover){
+		
+		if(!instance_exists(playerCharaDescriptionBox)){
+			playerCharaDescriptionBox = instance_create_layer(RES_WIDTH-8,8,layer_get_id("layerGUI"),oTextBox,{
+				description: charaName,
+				image_xscale: 0,
+				xscaleRate: 0.5,
+				imageHeight: 20,
+				showDesc: false,
+				font: fPixelTextMini,
+				textBoxWidth: RES_WIDTH*0.25
+					
+			});
+		}	
+	}
+	else if(instance_exists(playerCharaDescriptionBox))instance_destroy(playerCharaDescriptionBox);
 		
 }
 

@@ -42,6 +42,7 @@
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"sprSpecial","path":"objects/pPlayerChara/pPlayerChara.yy",},"objectId":{"name":"pPlayerChara","path":"objects/pPlayerChara/pPlayerChara.yy",},"value":"sEretLmanbrgSpecial",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"sprDefense","path":"objects/pPlayerChara/pPlayerChara.yy",},"objectId":{"name":"pPlayerChara","path":"objects/pPlayerChara/pPlayerChara.yy",},"value":"sTubboLmanbrgHurt",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"maxcharaHP","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"HP.MID",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"charaName","path":"objects/pCharacter/pCharacter.yy",},"objectId":{"name":"pCharacter","path":"objects/pCharacter/pCharacter.yy",},"value":"Eret Lmanberg",},
   ],
   "parent": {
     "name": "PlayerCharas",

@@ -1,32 +1,11 @@
 /*
 
-ALL DRAW GUI TEXT POSITION SHOULD BE MULTIPLIED BY 2 DUE TO THE GUI SRUFACE BEING THE DOUBLE OF THE ROOM SIZE
-
- TO DO
-implementar pelear con multiples enemigos donde usando las flechas aumente o disminuye el valor 
-en un arreglo que contiene los enemigos y asi elegir a cual atacar y a su vez dependiendo del 
-enemigo cambiar la posicion del outline para distinguir cual seleccione para atacar graficamente
-mediante un objeto/ sprite de una sombra en el suelo o cualqueir color para distinguir y que este ajuste su posicion a ser 
-la del enemigo en el arreglo que tengo seleccionado
-
-!DONE
-Com hago la barra de vida? 
-(debe de estar sobre cada personaje, prodia hacer un objeto que con el battle manager al inicio de la pelea
-genere cada objeto de vida por entidad en el cuarto , tanto enemigo como aliado y este objeto cambia segun l vida del 
-personaje al que este vinculado y, se destruira si la instancia del objeto al que esta asigndo se detruye)
-
-!DONE
-añadir el flash par cuando golpean 
 
 
 añadir que los personajes se acerquen al objetivo al golpear
 
 hacer tutorial
 
-
- TO FIX
- 
-no se porque el enemigo no golpea en su turno..
 
  IDEAS
 

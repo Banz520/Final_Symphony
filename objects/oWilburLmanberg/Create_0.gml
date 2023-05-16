@@ -11,11 +11,13 @@ playerChooseTargetToSpecial = false;
 
 function PlayerStateHeal(){
 	
-	DeletePlayerActionMenu();
+	if(sprite_index != sprSpecial){
+		DeletePlayerActionMenu();
+		localFrame = 0;
+		sprite_index = sprSpecial;	
+	}
 	
-	sprite_index = sprDefense;
 	AnimateSprite();
-	flash = 0.5;
 	
 	if(animationEnd){
 		for(var i = 0; i < global.playerCharasOnBattle;i++){
@@ -34,10 +36,10 @@ function PlayerStateHeal(){
 
 function WilburLmanbergSpecial(){
 	
-	if(sprite_index != sprDefense){
+	if(sprite_index != sprSpecial){
 		DeletePlayerActionMenu();
 		localFrame = 0;
-		sprite_index = sprDefense;	
+		sprite_index = sprSpecial;	
 	}
 	
 	AnimateSprite();

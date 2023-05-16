@@ -13,9 +13,6 @@ instance_create_layer(
 	 }
 );
 
-
-fadeAlpha = 1;
-fadeAlpha2 = 1;
 enterToContinueText = noone;
 configChangeText = noone;
 

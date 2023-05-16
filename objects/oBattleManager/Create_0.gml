@@ -91,6 +91,8 @@ function SelectPlayerCharaWithKeys(){
 	var keySelectLeft = (global.keyPrevLeft || global.keyNextUp);
 	var keySelectRight = (global.keyNextRight || global.keyPrevDown)*-1;
 	
+	playerCharasOnBattleList[|playerCharaSelected].playerCharaIsHover = true;
+	var lastPlayerCharaSelected = playerCharaSelected;
 			
 	//keep selection on the enemy list number range
 	if(playerCharaSelected <= (global.playerCharasOnBattle-1) && playerCharaSelected >= 0){
@@ -114,6 +116,9 @@ function SelectPlayerCharaWithKeys(){
 	
 	var playerCharaSelectedId = playerCharasOnBattleList[|playerCharaSelected];
 	playerCharaSelectedId.flash = 0.5;
+	playerCharaSelectedId.playerCharaIsHover = true;
+	
+	if(lastPlayerCharaSelected != playerCharaSelected)playerCharasOnBattleList[|lastPlayerCharaSelected].playerCharaIsHover = false;
 	
 	return playerCharaSelectedId;
 	
@@ -152,7 +157,8 @@ function SetTurns(){
 					if(instance_exists(currentPlayerCharaOnTurn)){
 					
 						if(currentPlayerCharaOnTurn.charaState != currentPlayerCharaOnTurn.charaStateHurt) {
-					
+							
+							currentPlayerCharaOnTurn.playerCharaIsHover = false;
 							currentPlayerCharaOnTurn.charaState = currentPlayerCharaOnTurn.charaStateTurn;
 							global.combatState = COMBAT_STATE.PLAYER_ACT;
 							keySelectPlayerCharaCount = 0;
