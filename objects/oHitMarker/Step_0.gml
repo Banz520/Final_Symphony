@@ -20,7 +20,7 @@ if(!global.gamePaused){
 			
 			//Hurt Chara
 			totalDamage -= parentChara.charaDamage*defense;
-			totalDamage = max(1,floor(totalDamage));
+			totalDamage = max(1,ceil(totalDamage));
 			target.charaHP -= totalDamage;
 			CreateDamageNumber(target,totalDamage);
 			target.charaState = target.charaStateHurt;
@@ -32,7 +32,7 @@ if(!global.gamePaused){
 		
 		//Hurt Chara
 		totalDamage -= parentChara.charaDamage*defense;
-		totalDamage = max(1,floor(totalDamage));
+		totalDamage = max(1,ceil(totalDamage));
 		target.charaHP -= totalDamage;
 		CreateDamageNumber(target,totalDamage);
 		target.charaState = target.charaStateHurt;

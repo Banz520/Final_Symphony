@@ -30,7 +30,8 @@ function MACROS(){
 	
 	enum DMG{
 		
-		HIGH = 8,
+		MASSIVE = 10,
+		HIGH = 7,
 		MID = 5,
 		LOW = 3
 		

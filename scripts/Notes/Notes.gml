@@ -42,11 +42,16 @@ no chara can have two high stats or two low stats to make balanced , with some e
 
 
 
-Poner numeros a las barras de vida
+Poner numeros a las barras de vida DONE
 explicar el sistema de defensa
-cambiar el simbolo para los puntos de caos, que se vea mas visual y mas contraste en el numero
-quiza una dinamita que se acorte la mecha
+cambiar el simbolo para los puntos de caos, que se vea mas visual y mas contraste en el numero DONE
+quiza una dinamita que se acorte la mecha 
 
+
+
+Mas puntos por turno DONE
+poder cambiar el personaje elegido DONE
+ver current atk and def on the chara desc DONE
 
 
 

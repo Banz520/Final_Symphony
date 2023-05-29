@@ -66,7 +66,7 @@ charaStateSpecial = TommyLmanbergSpecial;
 
 buttonActionList = [
 	[oButtonPlayerAttack,"Shot the selected enemy dealing\n"+string(charaDamageBase)+" points of damage!"],
-	[oButtonPlayerDefend,"Rises defense for the next turn and\nsave wasting chaos points"],
+	[oButtonPlayerDefend,defenseDesc],
 	[oButtonPlayerSpecial,"TRADE DEFICIT: Rises the teammates defense\nbut decreases self"]
 ];
 

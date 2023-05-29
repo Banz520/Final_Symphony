@@ -8,8 +8,8 @@ if(!global.gamePaused){
 		
 	}
 	else{
-		charaDamage = charaDamageBase * charaDamageMod;
-		charaDefense = charaDefenseBase * charaDefenseMod;
+		charaDamage =  charaDamageBase * min(charaDamageMod,2);
+		charaDefense = charaDefenseBase * min(charaDefenseMod,2);
 		if(charaHP > maxcharaHP)charaHP = maxcharaHP;
 		script_execute(charaState);
 	

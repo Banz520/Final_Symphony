@@ -2,6 +2,9 @@
 
 battleTimer += 25* delta_time / 1000000;
 
+if(global.keyCancel &&  global.combatState == COMBAT_STATE.PLAYER_ACT)changePlayerCharaSelected =  true;
+
+
 if(battleTimer > 13 || global.combatState == COMBAT_STATE.PLAYER_TURN){
 	
 	if(!CheckWinOrLose())SetTurns();

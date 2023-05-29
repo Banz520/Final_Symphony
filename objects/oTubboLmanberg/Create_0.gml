@@ -42,7 +42,7 @@ charaStateHeal = TubboLmanbergHeal;
 
 buttonActionList = [
 	[oButtonPlayerAttack,"Attack all enemies dealing\n"+string(charaDamageBase)+" points of damage!"],
-	[oButtonPlayerDefend,"Rises defense for the next turn and\nsave wasting chaos points"],
+	[oButtonPlayerDefend,defenseDesc],
 	[oButtonPlayerHeal,"Heals " + string(charaRegen) + "HP to all teammates"]
 ];
 

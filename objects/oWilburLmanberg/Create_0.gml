@@ -72,7 +72,7 @@ charaStateSpecial = WilburLmanbergSpecial;
 
 buttonActionList = [
 	[oButtonPlayerHeal,"Rises all allies defense and damage"],
-	[oButtonPlayerDefend,"Rises defense for the next turn and\nsave wasting chaos points"],
+	[oButtonPlayerDefend,defenseDesc],
 	[oButtonPlayerSpecial,"Wilbur becomes the main target to all\nenemies"]
 ];
 

@@ -2,6 +2,7 @@
 event_inherited();
 
 playerCharaIsHover = false;
+playerCharaUsedTurn = false;
 
 buttonXOffset = x;
 buttonYOffset = y-sprite_height*0.75;
@@ -20,7 +21,10 @@ playerChooseTargetToSpecial = true;
 
 playerCharaDescriptionBox = noone;
 
+
 buttonActionList = [-1];
+
+defenseDesc = "Rises defense for the next turn and\nsave wasting chaos points";
 
 function SetButtonList(){
 	
@@ -177,6 +181,22 @@ function PlayerShotAttack(targetToShot,proyectileSprite,proyectileSpeed,animLoop
 	
 }
 	
+function PlayerHitAttack(animAttackFrame, hitMarkSpr){
+	
+	DeletePlayerActionMenu();
+	
+	if(sprite_index != sprAttack){
+		sprite_index = sprAttack;
+		localFrame = 0;
+	}
+	
+	AnimateSprite();
+	
+	if(localFrame == animAttackFrame)CreateHitMarker(enemyTarget, 1, hitMarkSpr, id);
+	
+	if(animationEnd)charaState = charaStateWait;
+}
+
 function PlayerSplashAttack(proyectileSprite,proyectileSpeed,animLoopLastFrame,animLoopFirstFrame){
 	
 	
@@ -254,6 +274,9 @@ function PlayerCharaStateTurn(){
 
 function PlayerStateWait(){
 	
+	if(playerCharaUsedTurn) image_alpha = 0.6;
+	else image_alpha = 1;
+	
 	sprite_index = sprIdle;
 	AnimateSprite();
 	keyConfirmPressedCount = 0;
@@ -265,7 +288,7 @@ function PlayerStateWait(){
 		
 		if(!instance_exists(playerCharaDescriptionBox)){
 			playerCharaDescriptionBox = instance_create_layer(RES_WIDTH-8,8,layer_get_id("layerGUI"),oTextBox,{
-				description: charaName,
+				description: string("{0}\nAtk: {1}  Def: x{2}",charaName,ceil(charaDamage),charaDefense),
 				image_xscale: 0,
 				xscaleRate: 0.5,
 				imageHeight: 20,

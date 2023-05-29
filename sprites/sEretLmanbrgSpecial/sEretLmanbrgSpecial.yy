@@ -97,7 +97,6 @@
   },
   "layers": [
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"bfc5650f-b389-46ee-a78b-a383684a1381","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1",},
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"1d48b1de-2894-4cdd-ba3f-230443b49dfa","visible":false,"isLocked":false,"blendMode":0,"opacity":73.0,"displayName":"Layer 1 (2)",},
     {"resourceType":"GMImageFolderLayer","resourceVersion":"1.0","name":"4681faa9-0297-489a-ac67-57265306d0e8","layers":[
         {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"73b88724-7249-4662-9072-85b6a1b28a20","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"HEAD (2)",},
         {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"e828ef18-7727-43aa-9b91-4a7d0e21c83c","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"HANDS",},

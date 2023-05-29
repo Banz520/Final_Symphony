@@ -13,7 +13,7 @@ function EnemyStateTurn(){
 }
 
 function EnemyStateAttack(){
-	EnemyAttackHit(6,sHitEffectSlash);
+	EnemyAttackHit(7,sHitEffectSlash);
 }
 
 

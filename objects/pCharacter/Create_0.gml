@@ -7,6 +7,7 @@ charaDefenseMod = 1;
 charaDefenseBase = charaDefense;
 charaBuffDuration = 0;
 
+
 flash = 0;
 flashDecrease = 0.2;
 flashShader = 0;

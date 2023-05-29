@@ -8,8 +8,7 @@ playerChooseTargetToSpecial = false;
 
 function PlayerStateAttack(){
 		
-	PlayerShotAttack(enemyTarget,PROYECTILE_SPR.ARROW,1,7,3);
-	//CreateHitMarker(enemyTarget, 1, sHitEffectSlash, id);
+	PlayerHitAttack(12,sHitEffectSlash);
 }
 
 function EretSpecial(){
@@ -49,7 +48,7 @@ charaStateSpecial = EretSpecial;
 
 buttonActionList = [
 	[oButtonPlayerAttack,"Attacks enemy"],
-	[oButtonPlayerDefend,"Rises defense for the next turn in order to save chaos points"],
+	[oButtonPlayerDefend,defenseDesc],
 	[oButtonPlayerSpecial,string("MEANT TO BE: Eret betrays their allies dealing\n{0} points of damage to them but rises Erets\ndefense and attack a lot!",charaDamage)]
 ];
 

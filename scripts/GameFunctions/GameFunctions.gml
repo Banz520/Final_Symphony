@@ -51,28 +51,14 @@ function SelectButtonWithKeys(buttonList){
 		buttonList[actionSelected].selected = true;
 		var lastActionSelected = actionSelected;
 		
-		//keep selection on the button array number range
-		if(actionSelected <= array_length(buttonList)-1 && actionSelected >= 0){
-			actionSelected += keySelectUp+keySelectDown;
-			if(actionSelected > array_length(buttonList)-1){
-				actionSelected = 0;
-			}
-			else if(actionSelected < 0){
-				actionSelected = array_length(buttonList)-1;
-			}
-		}
-		else{
-			if(actionSelected > array_length(buttonList)-1){
-				actionSelected = 0;
-			}
-			else if(actionSelected < 0){
-				actionSelected = array_length(buttonList)-1;
-			}
-		}//keep selection on the button array number range
+		
+		actionSelected += keySelectUp + keySelectDown;
+		var buttonListLength = array_length(buttonList);
+		
+		actionSelected = (actionSelected % buttonListLength + buttonListLength) % buttonListLength;
+		
 		if(lastActionSelected != actionSelected)buttonList[lastActionSelected].selected = false;
 		
 		return buttonList[actionSelected];			
 }
 
-
-	
