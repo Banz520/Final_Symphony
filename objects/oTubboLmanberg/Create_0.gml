@@ -5,12 +5,12 @@
 event_inherited();
 
 playerChooseTargetToAtk = false;
-playerChooseTargetToSpecial = false;
+playerChooseTargetToHeal = false;
 
 //sprHurtListLength = array_length(sprHurt);
 
 
-function PlayerStateAttack(){
+function TubboLmanbergAttack(){
 	
 	PlayerSplashAttack(PROYECTILE_SPR.POTION,4,9,4);
 		
@@ -20,10 +20,10 @@ function PlayerStateAttack(){
 
 function TubboLmanbergHeal(){
 	
-	if(sprite_index != sprDefense){
+	if(sprite_index != sprHeal){
 		DeletePlayerActionMenu();
 		localFrame = 0;
-		sprite_index = sprDefense;	
+		sprite_index = sprHeal;	
 	}
 	
 	AnimateSprite();
@@ -36,14 +36,51 @@ function TubboLmanbergHeal(){
 
 
 //Declare Character States
-charaStateAttack = PlayerStateAttack; 
+charaStateAttack = TubboLmanbergAttack; 
 charaStateHeal = TubboLmanbergHeal;
+
+tubboHealDescEN = "Heals " + string(charaRegen) + "HP to all teammates";
+SetAtkValueToThrowDesc();
+
+
+
+//Tubbo Interactions
+charasToInteractList = [
+
+	["Tommy","Tubbo gives Tommy a golden apple"]
+
+];
+
+function PlayerInteractions(charaToInteractIndx, charaToInteractWith){
+	
+	
+	switch(charaToInteractIndx){
+			
+		case 0:{
+			//Tommy
+			charaToInteractWith.charaHP += 5;
+			charaToInteractWith.DrawHealEffect();
+			break;
+		}
+		
+		default:{
+			show_debug_message("The interaction lead to nothing");
+			break;	
+		}
+	}
+	
+}
 
 
 buttonActionList = [
-	[oButtonPlayerAttack,"Attack all enemies dealing\n"+string(charaDamageBase)+" points of damage!"],
+	[oButtonPlayerAttack,throwAtkDesc],
+	[oButtonPlayerInteract,interactDesc],
 	[oButtonPlayerDefend,defenseDesc],
-	[oButtonPlayerHeal,"Heals " + string(charaRegen) + "HP to all teammates"]
+	[oButtonPlayerHeal,tubboHealDescEN]
 ];
 
 SetButtonList();
+
+friendList = ["Tommy","Eret"];
+FindRelationCharasOnGame(friendList,oBattleManager.playerCharasOnBattleList,friendListOnLevel);
+

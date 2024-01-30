@@ -1,6 +1,6 @@
 /// @description CheckWinOrLose & Turns
 
-battleTimer += 25* delta_time / 1000000;
+battleTimer += 25 * delta_time / 1000000;
 
 if(global.keyCancel &&  global.combatState == COMBAT_STATE.PLAYER_ACT)changePlayerCharaSelected =  true;
 
@@ -12,16 +12,20 @@ if(battleTimer > 13 || global.combatState == COMBAT_STATE.PLAYER_TURN){
 }
 
 if(instance_exists(enemyTurnText)){
-	enemyTurnText.x += random_range(-0.5,0.5);
-	enemyTurnTextOutline1.x = enemyTurnText.x + 1;
-	enemyTurnTextOutline2.x = enemyTurnText.x - 1;
+	
+	var xRandomRange = 0.8;
+	var yRandomRange = 0.3;
+	enemyTurnText.x += random_range(-xRandomRange, xRandomRange);
+	enemyTurnText.y += random_range(-yRandomRange, yRandomRange);
+	
 }
 
 
 if(instance_exists(playerTurnText)){
-	playerTurnText.x += random_range(-0.5,0.5);
-	playerTurnTextOutline1.x = playerTurnText.x + 1;
-	playerTurnTextOutline2.x = playerTurnText.x - 1;
 	
+	var xRandomRange = 0.8;
+	var yRandomRange = 0.3;
+	playerTurnText.x += random_range(-xRandomRange, xRandomRange);
+	playerTurnText.y += random_range(-yRandomRange, yRandomRange);
 }
 

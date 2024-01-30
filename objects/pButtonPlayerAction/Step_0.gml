@@ -19,16 +19,40 @@ if(!global.gamePaused){
 		
 			//show description
 			if(!instance_exists(descriptionBox)){
-				descriptionBox = instance_create_layer(RES_WIDTH-8,8,layer_get_id("layerGUI"),oTextBox,{
-					description: actionDescription,
-					image_xscale: 0,
-					xscaleRate: 0.5,
-					imageHeight: RES_HEIGHT*0.25,
-					showDesc: false,
-					font: fPixelTextMiniMicro,
-					textBoxWidth:RES_WIDTH*0.5
+				actionCostText = "\n\n\nCost: " + string(actionCost) + " Chaos Points";
+				
+				if(actionCost <= global.battlePoints){
+					descriptionBox = instance_create_layer(8,8,layer_get_id("layerGUI"),oTextBox,{
+						font: fPixelTextMiniMicro,
+						description1: actionDescription,
+						textColor1: c_white,
+						hasSecondText: true,
+						textColor2: c_yellow,
+						description2: actionCostText,
+						image_xscale: 0,
+						xscaleRate: 0.5,
+						imageHeight: RES_HEIGHT*0.25,
+						showDesc: false,
+						textBoxWidth: RES_WIDTH*0.5
+					});
+				}
+				else{
 					
-				});
+					descriptionBox = instance_create_layer(8,8,layer_get_id("layerGUI"),oTextBox,{
+						font: fPixelTextMiniMicro,
+						description1: actionDescription,
+						textColor1: c_white,
+						hasSecondText: true,
+						textColor2: c_red,
+						description2: actionCostText,
+						image_xscale: 0,
+						xscaleRate: 0.5,
+						imageHeight: RES_HEIGHT*0.25,
+						showDesc: false,
+						textBoxWidth: RES_WIDTH*0.5
+					
+					});
+				}
 			}
 		
 			if(executeAction) oBattleManager.currentPlayerCharaOnTurn.charaState = buttonSetAction;

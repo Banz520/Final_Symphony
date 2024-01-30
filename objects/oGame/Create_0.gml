@@ -1,9 +1,19 @@
 /// @description Init Game & Variables & globals
 
+enum LANGUAGE {
+	
+	ENGLISH,
+	SPANISH
+	
+}
+
+
+gameLanguage = LANGUAGE.ENGLISH;
+
 global.combatState = COMBAT_STATE.WAIT;
 global.gameClock = 0;
 global.gamePaused = false;
-//global.clockCount = 0;
+
 
 //Set Up Camera
 global.iCamera = instance_create_layer(0,0,layer,oCamera);
@@ -12,28 +22,34 @@ global.iCamera = instance_create_layer(0,0,layer,oCamera);
 surface_resize(application_surface,RES_WIDTH * UI_XSCALE,RES_HEIGHT * UI_YSCALE);
 
 global.battleBackgroundSprite = sBackGroundBlack;
+
 keyManualText = noone;
 gamePausedText = noone;
 
-keyContinue = ["SPACE",vk_space];
-keyCancel = ["TAB",vk_tab];
-keyNextUp = "W";
-keyNextRight = "D";
-keyPrevDown = "S";
-keyPrevLeft = "A";
+//SetUp KeyBinds
+keyContinue = ["Z",ord("Z")];
+keyCancel = ["X",ord("X")];
+keyOther = ord("C");
+keyNextUp = vk_up;
+keyNextRight = vk_right;
+keyPrevDown = vk_down;
+keyPrevLeft = vk_left;
 
-keyManual = string("Use {0}{1}{2}{3} to move through the menus/options\nUse {4} to confirm action/continue\nUse {5} to cancel action\nUse PAUSE to pause the game\nUse ESC when the game is paused to\nreturn to the level menu",keyNextUp,keyPrevLeft,keyPrevDown,keyNextRight,keyContinue[0],keyCancel[0]);
+
+keyManual = string("[ARROWS] - Move through the menus/options\n[{0} or SPACE] - Confirm action/Continue\n[{1} or SHIFT] - Cancel action\n[ESC] - pause the game",keyContinue[0],keyCancel[0]);
 
 function ShowPauseDesc(currentRoomName){
 	switch(currentRoomName){
 		
 			case "rBattle":{
 						
-				keyManualText = instance_create_depth(RES_WIDTH*0.4,16,depth,oTextBox,{
-					description: keyManual,
+				keyManualText = instance_create_depth(RES_WIDTH - 20 - RES_WIDTH * 0.35,16,depth,oTextBox,{
+					description1: keyManual,
+					hasSecondText: false,
+					textColor1: c_white,
 					image_xscale: 1,
 					xscaleRate: 1,
-					imageHeight: RES_HEIGHT*0.275,
+					imageHeight: RES_HEIGHT * 0.275,
 					showDesc: true,
 					image_index: 0,
 					font: fPixelTextMicro,
@@ -41,15 +57,17 @@ function ShowPauseDesc(currentRoomName){
 	
 				});
 		
-				gamePausedText = instance_create_depth(RES_WIDTH*0.4,2,depth,oTextBox,{
-					description: "GAME PAUSED",
+				gamePausedText = instance_create_depth(RES_WIDTH - 20 - RES_WIDTH * 0.35,2,depth,oTextBox,{
+					hasSecondText: false,
+					textColor1: c_white,
+					description1: "GAME PAUSED",
 					image_xscale: 1,
 					xscaleRate: 1,
-					imageHeight: RES_HEIGHT*0.275,
+					imageHeight: RES_HEIGHT * 0.275,
 					showDesc: true,
 					image_index: 0,
 					font: fPixelTextMini,
-					textBoxWidth: RES_WIDTH*0.35
+					textBoxWidth: RES_WIDTH * 0.35
 	
 				});
 			
@@ -61,27 +79,31 @@ function ShowPauseDesc(currentRoomName){
 		
 			case "rLevelMenu":{
 			
-				keyManualText = instance_create_depth(RES_WIDTH-8,16,depth,oTextBox,{
-						description: keyManual,
+				keyManualText = instance_create_depth(RES_WIDTH - 20 - RES_WIDTH * 0.35,16,depth,oTextBox,{
+						description1: keyManual,
+						hasSecondText: false,
+						textColor1: c_white,
 						image_xscale: 1,
 						xscaleRate: 1,
-						imageHeight: RES_HEIGHT*0.275,
+						imageHeight: RES_HEIGHT * 0.275,
 						showDesc: true,
 						image_index: 0,
 						font: fPixelTextMicro,
-						textBoxWidth: RES_WIDTH*0.35
+						textBoxWidth: RES_WIDTH * 0.35
 					}
 				);
 			
-				gamePausedText = instance_create_depth(RES_WIDTH-8,2,depth,oTextBox,{
-					description: "GAME PAUSED",
+				gamePausedText = instance_create_depth(RES_WIDTH - 20 - RES_WIDTH * 0.35,2,depth,oTextBox,{
+					description1: "GAME PAUSED",
+					hasSecondText: false,
+					textColor1: c_white,
 					image_xscale: 1,
 					xscaleRate: 1,
-					imageHeight: RES_HEIGHT*0.275,
+					imageHeight: RES_HEIGHT * 0.275,
 					showDesc: true,
 					image_index: 0,
 					font: fPixelTextMini,
-					textBoxWidth: RES_WIDTH*0.35
+					textBoxWidth: RES_WIDTH * 0.35
 	
 				});
 			

@@ -8,7 +8,7 @@ if(!global.gamePaused){
 			
 			global.battlePoints += global.battlePointsForPerfectAct;
 			//play sound
-			parentChara.charaDamageMod += 0.5;	
+			parentChara.charaDamageMod += BUFFSMALL;	
 		}
 	
 		image_speed = 0;
@@ -17,7 +17,7 @@ if(!global.gamePaused){
 	}
 
 
-	if(floor(image_index)+1 == image_number)image_speed = -1;
+	if(floor(image_index) + 1 == image_number)image_speed = -1;
 
 	if(floor(image_index) == 0)image_speed = 1;
 }

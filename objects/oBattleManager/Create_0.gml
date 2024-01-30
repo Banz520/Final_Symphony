@@ -5,7 +5,7 @@ global.enemiesOnBattle = 0;
 global.playerCharasOnBattle = 0;
 
 global.battlePointsForEnemyDefeat = 2;
-global.battlePointsForPerfectAct = 0.5;
+global.battlePointsForPerfectAct = 1;
 
 battlePointsPerTurn = 5;
 battlePointsInit = 6;
@@ -88,7 +88,7 @@ function CheckWinOrLose(){
 
 
 
-function SelectPlayerCharaWithKeys(){
+function SelectPlayerCharaWithKeys(showPlayerCharaDescBox = true){
 	
 	var playerCharasToUseList = [];
 	var toUseListIndex = 0;
@@ -120,10 +120,17 @@ function SelectPlayerCharaWithKeys(){
 	
 	var playerCharaSelectedId = playerCharasToUseList[playerCharaSelected];
 	
-	playerCharaSelectedId.playerCharaIsHover = true;
+	playerCharaSelectedId.charaIsHover = true;
 	playerCharaSelectedId.flash = 0.5;
-
-	if(instance_exists(lastPlayerCharaSelectedId)) && (lastPlayerCharaSelectedId.id != playerCharaSelectedId.id)lastPlayerCharaSelectedId.playerCharaIsHover = false;
+	
+	if(showPlayerCharaDescBox){
+		playerCharaSelectedId.playerCharaDrawDescBox = true;
+	}
+	
+	if(instance_exists(lastPlayerCharaSelectedId)) && (lastPlayerCharaSelectedId.id != playerCharaSelectedId.id) {
+		lastPlayerCharaSelectedId.charaIsHover = false;
+		lastPlayerCharaSelectedId.playerCharaDrawDescBox = false;
+	}
 	
 	return playerCharaSelectedId;
 
@@ -131,66 +138,57 @@ function SelectPlayerCharaWithKeys(){
 
 function PlayerTurn(){
 	
-	if(instance_exists(playerTurnText)){
+	if(!instance_exists(playerTurnText)){
 					
-		playerTurnTextTimer += 25 * delta_time / 1000000;
-		if(playerTurnTextTimer > 13){
-			instance_destroy(playerTurnTextOutline1);
-			instance_destroy(playerTurnTextOutline2);
-			instance_destroy(playerTurnText);
-		}
-	}
+		var keySelectPlayerChara = global.keyContinue;
+		keySelectPlayerCharaCount += keySelectPlayerChara;
 				
-	var keySelectPlayerChara = global.keyContinue;
-	keySelectPlayerCharaCount += keySelectPlayerChara;
-				
-	if(keySelectPlayerCharaCount < 1){
+		if(keySelectPlayerCharaCount < 1){
 					
-		currentPlayerCharaOnTurn = SelectPlayerCharaWithKeys();
-		if(currentPlayerCharaOnTurn == noone){
+			currentPlayerCharaOnTurn = SelectPlayerCharaWithKeys();
+			if(currentPlayerCharaOnTurn == noone){
 			
-			changePlayerCharaSelected = false;
-			keySelectPlayerCharaCount = 0;
-			playerCharaTurns = global.playerCharasOnBattle;
-			playerCharaSelected++;
-			global.combatState = COMBAT_STATE.WAIT;
-		}
-	}
-	else if(keySelectPlayerCharaCount >= 1){
-					
-		if(instance_exists(currentPlayerCharaOnTurn)){
-					
-			if(currentPlayerCharaOnTurn.charaState != currentPlayerCharaOnTurn.charaStateHurt) {
-							
-				currentPlayerCharaOnTurn.playerCharaIsHover = false;
-				currentPlayerCharaOnTurn.charaState = currentPlayerCharaOnTurn.charaStateTurn;
 				changePlayerCharaSelected = false;
-				global.combatState = COMBAT_STATE.PLAYER_ACT;
 				keySelectPlayerCharaCount = 0;
-
+				playerCharaTurns = global.playerCharasOnBattle;
+				playerCharaSelected++;
+				global.combatState = COMBAT_STATE.WAIT;
 			}
 		}
-	}
+		else if(keySelectPlayerCharaCount >= 1){
+					
+			if(instance_exists(currentPlayerCharaOnTurn)){
+					
+				if(currentPlayerCharaOnTurn.charaState != currentPlayerCharaOnTurn.charaStateHurt) {
+							
+					currentPlayerCharaOnTurn.charaIsHover = false;
+					currentPlayerCharaOnTurn.charaState = currentPlayerCharaOnTurn.charaStateTurn;
+					changePlayerCharaSelected = false;
+					global.combatState = COMBAT_STATE.PLAYER_ACT;
+					keySelectPlayerCharaCount = 0;
+
+				}
+			}
+		}
 	
+	}
 }
 
 function EnemyTurn(){
 	
-	if(instance_exists(enemyTurnText)){
-			instance_destroy(enemyTurnTextOutline1);
-			instance_destroy(enemyTurnTextOutline2);
-			instance_destroy(enemyTurnText);
-	}
-	if(instance_exists(currentEnemyOnTurn)){
-		if(currentEnemyOnTurn.charaState != currentEnemyOnTurn.charaStateHurt){
-					
-			currentEnemyOnTurn.charaState = currentEnemyOnTurn.charaStateTurn;
-					
-			global.combatState = COMBAT_STATE.ENEMY_ACT;
-		}
-	}
+	if(!instance_exists(enemyTurnText)){
 			
-	else enemyOnTurnCount = 0;	
+		if(instance_exists(currentEnemyOnTurn)){
+			if(currentEnemyOnTurn.charaState != currentEnemyOnTurn.charaStateHurt){
+					
+				currentEnemyOnTurn.charaState = currentEnemyOnTurn.charaStateTurn;
+					
+				global.combatState = COMBAT_STATE.ENEMY_ACT;
+			}
+		}
+			
+		else enemyOnTurnCount = 0;	
+	}
 }
 	
 function EnemyAct(){
@@ -212,12 +210,42 @@ function EnemyAct(){
 	}
 }
 
+function ContinueTurn() {
+	
+	for(var playerCharasToCheck = 0; playerCharasToCheck < global.playerCharasOnBattle; playerCharasToCheck++){
+							
+		var playerCharaToCheck = playerCharasOnBattleList[|playerCharasToCheck];
+			
+		if(playerCharaToCheck.charaState == playerCharaToCheck.charaStateDead){
+			return false;	
+		}
+	}
+	
+	for(var enemiesToCheck = 0; enemiesToCheck < global.playerCharasOnBattle; enemiesToCheck++){
+							
+		var enemyToCheck = playerCharasOnBattleList[|enemiesToCheck];
+			
+		if(enemyToCheck.charaState == enemyToCheck.charaStateDead){
+			return false;	
+		}
+	}
+	
+	if (!instance_exists(oHitMarker) && !instance_exists(oParabolicProyectile) && !instance_exists(oLinearProyectile) && !instance_exists(oSpamMarker)){
+		
+		return true;
+	}
+	else {
+		return false;	
+	}
+	
+		
+}
+
 function SetTurns(){
 
-	//currentPlayerCharaOnTurn = playerCharasOnBattleList[|0];
 	currentEnemyOnTurn = enemiesOnBattleList[|enemyOnTurnCount];
 	
-	if(!instance_exists(oHitMarker) && !instance_exists(oParabolicProyectile) && !instance_exists(oLinearProyectile)){
+	if(ContinueTurn()){
 	
 		switch(global.combatState){
 		
@@ -230,11 +258,6 @@ function SetTurns(){
 		
 			case COMBAT_STATE.PLAYER_ACT:{
 				
-				if(instance_exists(playerTurnText)){
-						instance_destroy(playerTurnTextOutline1);
-						instance_destroy(playerTurnTextOutline2);
-						instance_destroy(playerTurnText);
-				}
 				
 				//Change Player Chara Selected
 				if(changePlayerCharaSelected){
@@ -284,34 +307,41 @@ function SetTurns(){
 			case COMBAT_STATE.WAIT:{
 									
 				
-				if(!instance_exists(oHitMarker) && !instance_exists(oParabolicProyectile) && !instance_exists(oLinearProyectile)){
+				if(ContinueTurn()){
 					turnCount++;
-					if(turnCount%2 == 1){
+					if(turnCount % 2 == 1){
 						
-						playerTurnText = instance_create_layer(RES_WIDTH * 0.5,RES_HEIGHT/3,layer_get_id("layerGUI"),oText,{textFont: fPixelText, textColor: c_white, textToDraw: "YOUR TURN!"});
-						playerTurnTextOutline1 = instance_create_layer((RES_WIDTH * 0.5) + 1,(RES_HEIGHT/3) + 1,layer_get_id("layerGUI"),oText,{textFont: fPixelText, textColor: c_blue, textToDraw: "YOUR TURN!"});
-						playerTurnTextOutline2 = instance_create_layer((RES_WIDTH) * 0.5 - 1,(RES_HEIGHT/3) - 1,layer_get_id("layerGUI"),oText,{textFont: fPixelText, textColor: c_blue, textToDraw: "YOUR TURN!"});
-						playerTurnTextTimer = 0;
+						//Draw player turn text
+						playerTurnText = instance_create_layer(RES_WIDTH * 0.5,RES_HEIGHT/3,layer_get_id("layerGUI"),oEffect,{sprite_index: sPlayerTurn});
+				
 						playerCharaSelected = 0;
 						
-						global.combatState = COMBAT_STATE.PLAYER_TURN;
-						//reset buffs
+						//reset playercharas buffs & stats
 						for(var i = 0; i < global.playerCharasOnBattle; i++){
-							playerCharasOnBattleList[|i].playerCharaUsedTurn = false;
-							if(playerCharasOnBattleList[|i].charaBuffDuration <= 0){
-								playerCharasOnBattleList[|i].charaDamageMod = 1;
-								playerCharasOnBattleList[|i].charaDefenseMod = 1;
+							
+							var charaToReset = playerCharasOnBattleList[|i];
+							
+							charaToReset.hasSpokenOnThisTurn = false;
+							charaToReset.sayWarningDialogue = 2;
+							charaToReset.playerCharaUsedTurn = false;
+							
+							if(charaToReset.charaBuffDuration <= 0){
+								charaToReset.charaDamageMod = 0;
+								charaToReset.charaDefenseMod = 0;
 							}
-							else playerCharasOnBattleList[|i].charaBuffDuration--;
+							else charaToReset.charaBuffDuration--;
+							
+							charaToReset.FindRelationCharasOnGame(charaToReset.friendList,playerCharasOnBattleList,charaToReset.friendListOnLevel);
 						}
+						
+						global.combatState = COMBAT_STATE.PLAYER_TURN;
 					}
 					else{
 						
 						
-						enemyTurnText = instance_create_layer(RES_WIDTH * 0.5,RES_HEIGHT/3,layer_get_id("layerGUI"),oText,{textFont: fPixelText, textColor: c_white, textToDraw: "ENEMY TURN!"});
-						enemyTurnTextOutline1 = instance_create_layer((RES_WIDTH * 0.5) + 1,(RES_HEIGHT/3) + 1,layer_get_id("layerGUI"),oText,{textFont: fPixelText, textColor: c_red, textToDraw: "ENEMY TURN!"});
-						enemyTurnTextOutline2 = instance_create_layer((RES_WIDTH) * 0.5 - 1,(RES_HEIGHT/3) - 1,layer_get_id("layerGUI"),oText,{textFont: fPixelText, textColor: c_red, textToDraw: "ENEMY TURN!"});
-						global.combatState = COMBAT_STATE.ENEMY_TURN;
+						enemyTurnText = instance_create_layer(RES_WIDTH * 0.5,RES_HEIGHT/3,layer_get_id("layerGUI"),oEffect,{sprite_index: sEnemyTurn});
+						
+						
 						//reset playercharas alpha
 						for(var i = 0; i < global.playerCharasOnBattle; i++){
 							playerCharasOnBattleList[|i].playerCharaUsedTurn = false;
@@ -319,14 +349,17 @@ function SetTurns(){
 						//reset buffs
 						for(var i = 0; i < global.enemiesOnBattle; i++){
 							if(enemiesOnBattleList[|i].charaBuffDuration <= 0){
-								enemiesOnBattleList[|i].charaDamageMod = 1;
-								enemiesOnBattleList[|i].charaDefenseMod = 1;
+								
+								enemiesOnBattleList[|i].charaDamageMod = 0;
+								enemiesOnBattleList[|i].charaDefenseMod = 0;
 							}
 							else enemiesOnBattleList[|i].charaBuffDuration--;
 							
 							if(enemiesOnBattleList[|i].enemyTauntDuration <= 0)enemiesOnBattleList[|i].enemyTauntTarget = noone;
 							else enemiesOnBattleList[|i].enemyTauntDuration--;
 						}
+						
+						global.combatState = COMBAT_STATE.ENEMY_TURN;
 					}
 				}
 				

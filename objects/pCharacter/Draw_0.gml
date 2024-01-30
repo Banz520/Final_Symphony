@@ -2,10 +2,16 @@
 
 
 DrawHealthBar(maxcharaHP,charaHP);
+DrawBuffMarker(charaDamageBase,charaDamage,charaDefenseBase,charaDefense);
+
 
 //draw flash
 if(flash != 0){
-		
+	
+	if(charaIsHover){
+		DrawSelectionArrow();
+	}
+	
 	shader_set(flashShader);
 	uFlash = shader_get_uniform(flashShader,"flash");
 	shader_set_uniform_f(uFlash,flash);

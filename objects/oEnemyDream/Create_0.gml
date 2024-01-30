@@ -2,26 +2,25 @@
 // Inherit the parent event
 event_inherited();
 
-image_xscale = -1;
-
-function EnemyStateTurn(){
+function EnemyDreamStateTurn(){
 		
-	sprite_index = sprIdle;
+	if(sprite_index != sprIdle)sprite_index = sprIdle;
+	
 	AnimateSprite();
 		
 	//Enemy AI here
 	charaState = charaStateAttack;
 }
 
-function EnemyStateAttack(){
+function EnemyDreamStateAttack(){
 
 	EnemyAttackHit(6,sHitEffectSlash,false);
 }
 
 
 //Declare Character States
-charaStateTurn = EnemyStateTurn;
-charaStateAttack = EnemyStateAttack;
+charaStateTurn = EnemyDreamStateTurn;
+charaStateAttack = EnemyDreamStateAttack;
 
 
 

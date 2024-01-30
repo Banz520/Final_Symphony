@@ -1,4 +1,4 @@
-/// @description Player Set Up
+/// @description Player States & Acts Set Up
 
 // Inherit the parent event
 event_inherited();
@@ -8,7 +8,7 @@ playerChooseTargetToSpecial = false;
 //sprHurtListLength = array_length(sprHurt);
 
 
-function PlayerStateAttack(){
+function TommyLmanbergAttack(){
 	
 	PlayerShotAttack(enemyTarget,PROYECTILE_SPR.ARROW,4,10,3);
 	
@@ -16,16 +16,19 @@ function PlayerStateAttack(){
 
 function TommyLmanbergSpecial(){
 	
-	if(sprite_index != sprDefense){
+	if(sprite_index != sprSpecial){
 		DeletePlayerActionMenu();
 		localFrame = 0;
-		sprite_index = sprDefense;	
+		sprite_index = sprSpecial;	
 	}
 	
 	AnimateSprite();
-	flash = 0.5;
 		
 	if(animationEnd){
+		
+		//Heal allies
+		PlayerHealAllTeammates();
+		
 		// buff player charas
 		for(var i = 0; i < global.playerCharasOnBattle;i++){
 			
@@ -34,7 +37,7 @@ function TommyLmanbergSpecial(){
 				
 				playerCharaToBuff.charaDefenseMod += BUFFMID;
 				playerCharaToBuff.charaBuffDuration = 3;
-				instance_create_layer(playerCharaToBuff.x,playerCharaToBuff.y,layer_get_id("layerGUI"),oEffect,{sprite_index: sBuffEffect})
+				playerCharaToBuff.DrawBuffEfect();
 			}
 		}
 		// debuff enemies
@@ -45,11 +48,11 @@ function TommyLmanbergSpecial(){
 				
 				enemyToDebuff.charaDamageMod -= BUFFSMALL;
 				enemyToDebuff.charaBuffDuration = 3;
-				instance_create_layer(enemyToDebuff.x,enemyToDebuff.y,layer_get_id("layerGUI"),oEffect,{sprite_index: sDebuffEffect})
+				enemyToDebuff.DrawDeBuffEfect();
 			}
 		}
 		
-		instance_create_layer(x,y,layer_get_id("layerGUI"),oEffect,{sprite_index: sDebuffEffect})
+		DrawDeBuffEfect();
 		charaDefenseMod -= BUFFSMALL;
 		charaBuffDuration = 3;
 		
@@ -59,15 +62,86 @@ function TommyLmanbergSpecial(){
 }
 
 
-//Declare Character States
-charaStateAttack = PlayerStateAttack; 
-charaStateSpecial = TommyLmanbergSpecial;
+//Tommy interact relations
+charasToInteractList = [
 
+	["Dream","Tommy told Dream he's a green\ngoblin and how much he hates him\n-Dreams attack rose"],
+	["Wilbur Lmanberg","Tommy tries to jump up to attack\n Dream but Wilbur stops him calling him\nwreckless"],
+	["Tubbo Lmanberg","Tommy tells Tubbo this time they'll\nbeat Dream\n-Tommy and Tubbos attack rose"],
+	["Sapnap","Tommy threathens Sapnap to kill Mars\nSapnap threathens to kill Henry\n-Tommy and Sapnaps attack rose"]
+
+];
+
+function PlayerInteractions(charaToInteractIndx, charaToInteractWith){
+	
+	
+	switch(charaToInteractIndx){
+			
+		case 0:{
+			//Dream
+			charaToInteractWith.charaDamageMod += BUFFSMALL;	
+			charaToInteractWith.DrawBuffEfect();
+			charaToInteractWith.charaBuffDuration += 1;
+			break;
+		}
+		
+		case 1:{
+			//Wilbur Lmanberg
+			charaDamageMod -= BUFFSMALL;	
+			DrawBuffEfect();
+			break;
+		}
+		
+		case 2:{
+			//Tubbo Lmanberg
+			charaToInteractWith.charaDamageMod += BUFFSMALL;	
+			charaToInteractWith.DrawBuffEfect();
+			charaDamageMod += BUFFSMALL;
+			DrawBuffEfect();
+			break;
+		}
+		
+		case 3:{
+			//Sapnap
+			charaToInteractWith.charaDamageMod += BUFFSMALL;	
+			charaToInteractWith.DrawBuffEfect();
+			charaToInteractWith.charaBuffDuration += 1;
+			charaDamageMod += BUFFSMALL;
+			DrawBuffEfect();
+			charaBuffDuration += 1;
+			break;
+		}
+		
+		default:{
+			show_debug_message("The interaction lead to nothing");
+			break;	
+		}
+	}
+	
+}
+
+
+//Declare Character States
+charaStateAttack = TommyLmanbergAttack; 
+charaStateSpecial = TommyLmanbergSpecial;
+//charaStateWait = PlayerStateWait;
+
+tommySpecDesc = "TRADE DEFICIT: Heals allies and rises their defense\nbut decreases self and decreases enemy attack";
+
+SetAtkValueToShootDesc();
 
 buttonActionList = [
-	[oButtonPlayerAttack,"Shot the selected enemy dealing\n"+string(charaDamageBase)+" points of damage!"],
+	[oButtonPlayerAttack,shotAtkDesc],
+	[oButtonPlayerInteract,interactDesc],
 	[oButtonPlayerDefend,defenseDesc],
-	[oButtonPlayerSpecial,"TRADE DEFICIT: Rises the teammates defense\nbut decreases self"]
+	[oButtonPlayerSpecial,tommySpecDesc]
 ];
 
 SetButtonList();
+
+warningDialogue = "Careful!";
+
+friendList = ["Tubbo","Wilbur"];
+
+FindRelationCharasOnGame(friendList,oBattleManager.playerCharasOnBattleList,friendListOnLevel);
+

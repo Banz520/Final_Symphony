@@ -5,55 +5,32 @@ event_inherited();
 
 enemyTauntTarget = noone;
 enemyTauntDuration = 0;
+playerCharaTarget  = noone;
 
 image_xscale = -1;
-
-function EnemyChooseTargetMVP(highestPlayerCharaTargetVal = 0, playerCharaTargetSelected = noone){
-	
-	for(var i = 0; i < global.playerCharasOnBattle; i++){
-			
-		var currentPlayerCharaTarget = oBattleManager.playerCharasOnBattleList[|i];		
-		var currentPlayerCharaTargetVal = currentPlayerCharaTarget.charaHP + currentPlayerCharaTarget.charaDamage;
-		
-		if(currentPlayerCharaTargetVal > highestPlayerCharaTargetVal){
-			highestPlayerCharaTargetVal = currentPlayerCharaTargetVal;
-			playerCharaTargetSelected = currentPlayerCharaTarget;
-		}	
-	}
-	return playerCharaTargetSelected;
-}
-
-function EnemyChooseTargetLVP(lowestPlayerCharaTargetVal = 100, playerCharaTargetSelected = noone){
-	
-	for(var i = 0; i < global.playerCharasOnBattle; i++){
-			
-		var currentPlayerCharaTarget = oBattleManager.playerCharasOnBattleList[|i];		
-		var currentPlayerCharaTargetVal = currentPlayerCharaTarget.charaHP + currentPlayerCharaTarget.charaDamage;
-		
-		if(currentPlayerCharaTargetVal < lowestPlayerCharaTargetVal){
-			lowestPlayerCharaTargetVal = currentPlayerCharaTargetVal;
-			playerCharaTargetSelected = currentPlayerCharaTarget;
-		}	
-	}
-	return playerCharaTargetSelected;
-}
 
 function EnemyAttackHit(animLastFrame,hitMarkSpr,targetMVP = true){
 	
 	if(sprite_index != sprAttack){
 		sprite_index = sprAttack;
 		if(enemyTauntTarget == noone){
-			if(targetMVP)playerCharaTarget = EnemyChooseTargetMVP();
-			else playerCharaTarget = EnemyChooseTargetLVP()
+			if(targetMVP)playerCharaTarget = FindMVPChara(global.playerCharasOnBattle, oBattleManager.playerCharasOnBattleList);
+			else playerCharaTarget = FindLVPChara(global.playerCharasOnBattle, oBattleManager.playerCharasOnBattleList);
 		}
 		else playerCharaTarget = enemyTauntTarget;
+		show_debug_message(playerCharaTarget);
 	}
 	
 	AnimateSprite();
 	
-	if(floor(localFrame) == animLastFrame && !instance_exists(oHitMarker))CreateHitMarker(playerCharaTarget,1,hitMarkSpr,id);
+	if(floor(localFrame) == animLastFrame && !instance_exists(oHitMarker)){
+		CreateHitMarker(playerCharaTarget,1,hitMarkSpr,id);
+	}
 	
-	if(animationEnd)charaState = charaStateWait;
+	if(animationEnd){
+		charaState = charaStateWait;
+		playerCharaTarget = noone;
+	}
 }
 
 function EnemyAttackThrow(animLastFrame,proyectileSpr){
@@ -65,9 +42,31 @@ function EnemyAttackThrow(animLastFrame,proyectileSpr){
 	
 	AnimateSprite();
 	
-	var playerCharaTarget = oBattleManager.playerCharasOnBattleList[|0];	
+	playerCharaTarget = oBattleManager.playerCharasOnBattleList[|0];	
 	
 	if(floor(localFrame) == animLastFrame && !instance_exists(oParabolicProyectile))CreateHitParabProyectile(playerCharaTarget,2,false,proyectileSpr);
+	//playerCharaTarget = noone;
+	if(animationEnd)charaState = charaStateWait;
+}
+
+
+function EnemyAttackThrowSpam(animLastFrame,proyectileSpr){
+	
+	if(sprite_index != sprAttack){
+		sprite_index = sprAttack;
+		
+	}
+	
+	AnimateSprite();
+	
+	playerCharaTarget = oBattleManager.playerCharasOnBattleList[|0];	
+	
+	if(floor(localFrame) == animLastFrame && !instance_exists(oParabolicProyectile)){
+		CreateHitParabProyectile(playerCharaTarget,2,false,proyectileSpr,true);
+		
+	}
+	
+	//playerCharaTarget = noone;
 	
 	if(animationEnd)charaState = charaStateWait;
 }

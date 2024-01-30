@@ -9,12 +9,12 @@ playerChooseTargetToSpecial = false;
 //sprHurtListLength = array_length(sprHurt);
 
 
-function PlayerStateHeal(){
+function WilburLmanbergBuff(){
 	
-	if(sprite_index != sprSpecial){
+	if(sprite_index != sprHeal){
 		DeletePlayerActionMenu();
 		localFrame = 0;
-		sprite_index = sprSpecial;	
+		sprite_index = sprHeal;	
 	}
 	
 	AnimateSprite();
@@ -23,11 +23,11 @@ function PlayerStateHeal(){
 		for(var i = 0; i < global.playerCharasOnBattle;i++){
 			
 			var playerCharaToBuff = oBattleManager.playerCharasOnBattleList[|i];
-			playerCharaToBuff.charaDamageMod += BUFFSMALL;
-			playerCharaToBuff.charaDefenseMod += BUFFSMALL;
-			playerCharaToBuff.charaBuffDuration = 1;
+			playerCharaToBuff.charaDamageMod += BUFFMID;
+			playerCharaToBuff.charaDefenseMod += BUFFMID;
+			playerCharaToBuff.charaBuffDuration = 2;
 			
-			instance_create_layer(playerCharaToBuff.x,playerCharaToBuff.y,	layer_get_id("layerGUI"),oEffect,{sprite_index: sBuffEffect})
+			playerCharaToBuff.DrawBuffEfect();
 		
 		}
 		charaState = charaStateWait;
@@ -52,13 +52,8 @@ function WilburLmanbergSpecial(){
 			enemyToTaunt.enemyTauntTarget = id;
 			enemyToTaunt.enemyTauntDuration = 2;
 			
-			instance_create_layer(
-				enemyToTaunt.x,
-				enemyToTaunt.y,
-				layer_get_id("layerGUI"),
-				oEffect,
-				{sprite_index: sAlertEffect}
-			);
+			enemyToTaunt.DrawAlertEffect();
+			
 		}
 		charaState = charaStateWait;
 	}
@@ -66,14 +61,77 @@ function WilburLmanbergSpecial(){
 
 
 //Declare Character States
-charaStateHeal = PlayerStateHeal;   
+charaStateHeal = WilburLmanbergBuff;   
 charaStateSpecial = WilburLmanbergSpecial;
 
 
+wilburLmanbergBuffDescEN = "Rises all allies defense and damage by 2 pts";
+wilburLmanbergSpecDescEN = "Wilbur becomes the main target to all enemies";
+
+wilburLmanbergBuffDesc = wilburLmanbergBuffDescEN;
+wilburLmanbergSpecDesc = wilburLmanbergSpecDescEN;
+
+charasToInteractList = [
+
+	["Dream","Wilbur teased Dream"],
+	["George","Wilbur glared at George\n-Wilbur let his defense drop"],
+	["Tommy Lmanberg","Wilbur tries to keep Tommy\nfrom rushing into the battle\nTommy becomes impatient\n-Tommys attack rose"],
+	["Quackity Manberg","Wilbur calls out to Quackity telling him\nhe's not strong enough to be a leader"],
+	["Schlatt","Wilbur calls Schlatt a tyrant, he doesn't\nseem to care..."]
+];
+
+
+function PlayerInteractions(charaToInteractIndx, charaToInteractWith){
+	
+	
+	switch(charaToInteractIndx){
+			
+		case 0:{
+			//Dream
+			charaToInteractWith.charaDefenseMod -= BUFFMID;	
+			charaToInteractWith.DrawDeBuffEfect();
+			break;
+		}
+		
+		case 1:{
+			//George
+			charaDefenseMod -= BUFFMID;	
+			DrawDeBuffEfect();
+			break;
+		}
+		
+		case 2:{
+			//Tommy Lmanberg
+			charaToInteractWith.charaDamageMod += BUFFMID;	
+			charaToInteractWith.DrawBuffEfect();
+			break;
+		}
+		
+		case 3:{
+			//Quackity Manberg
+			CreateHitMarker(charaToInteractWith,1,sHitEffectAngry,id,8);
+			break;
+		}
+		
+		case 4:{
+			//Schlatt
+			//CreateHitMarker(charaToInteractWith,1,sHitEffectAngry,id,charaDamage);
+			break;
+		}
+		
+		default:{
+			show_debug_message("The interaction lead to nothing");
+			break;	
+		}
+	}
+	
+}
+
 buttonActionList = [
-	[oButtonPlayerHeal,"Rises all allies defense and damage"],
+	[oButtonPlayerBuff,wilburLmanbergBuffDesc],
+	[oButtonPlayerInteract,interactDesc],
 	[oButtonPlayerDefend,defenseDesc],
-	[oButtonPlayerSpecial,"Wilbur becomes the main target to all\nenemies"]
+	[oButtonPlayerSpecial,wilburLmanbergSpecDesc]
 ];
 
 SetButtonList();

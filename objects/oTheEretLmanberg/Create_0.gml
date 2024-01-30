@@ -1,4 +1,4 @@
-/// @description 
+/// @description Eret MoveSet
 // Inherit the parent event
 event_inherited();
 
@@ -6,7 +6,7 @@ playerChooseTargetToAtk = true;
 playerChooseTargetToSpecial = false;
 
 
-function PlayerStateAttack(){
+function EretStateAttack(){
 		
 	PlayerHitAttack(12,sHitEffectSlash);
 }
@@ -32,7 +32,7 @@ function EretSpecial(){
 			
 		}
 		
-		instance_create_layer(x,y,layer_get_id("layerGUI"),oEffect,{sprite_index: sBuffEffect});
+		DrawBuffEfect();
 		charaDamageMod += BUFFBIG;
 		charaDefenseMod += BUFFBIG;
 		charaBuffDuration = 3;
@@ -43,11 +43,11 @@ function EretSpecial(){
 
 
 
-charaStateAttack = PlayerStateAttack;
+charaStateAttack = EretStateAttack;
 charaStateSpecial = EretSpecial;
 
 buttonActionList = [
-	[oButtonPlayerAttack,"Attacks enemy"],
+	[oButtonPlayerAttack,hitAtkDesc],
 	[oButtonPlayerDefend,defenseDesc],
 	[oButtonPlayerSpecial,string("MEANT TO BE: Eret betrays their allies dealing\n{0} points of damage to them but rises Erets\ndefense and attack a lot!",charaDamage)]
 ];

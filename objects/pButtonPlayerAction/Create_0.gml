@@ -8,4 +8,6 @@ selected = false;
 
 executeAction = false;
 
+actionCost = 0;
+
 image_speed = 0;

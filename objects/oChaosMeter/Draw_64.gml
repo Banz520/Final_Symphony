@@ -2,25 +2,28 @@
 
 if(!global.gamePaused && !instance_exists(oGame.gamePausedText)){
 	
+	//Draw chaosMeter Color & Alpha
 	var chaosMeterAlpha = min(1,0.7 + global.battlePoints/40);
 	var chaosMeterColor = c_white;
+	
 	if(global.battlePoints <= 5){
-		draw_sprite_ext(sChaosMeter,0,x,y,UI_XSCALE,UI_YSCALE,0,#ebebeb,chaosMeterAlpha);
+		draw_sprite_ext(sChaosMeter,0, x * UI_XSCALE + 8,y * UI_YSCALE,UI_XSCALE,UI_YSCALE,0,#ebebeb,chaosMeterAlpha);
 	}
 	else{
 		if(global.battlePoints <= 10){
 			if(floor(global.gameClock) % 5 == 0) chaosMeterColor = #ebebeb;
-			draw_sprite_ext(sChaosMeter,1,x,y,UI_XSCALE,UI_YSCALE,0,chaosMeterColor,chaosMeterAlpha);	
+			draw_sprite_ext(sChaosMeter,1,x * UI_XSCALE + 8,y * UI_YSCALE,UI_XSCALE,UI_YSCALE,0,chaosMeterColor,chaosMeterAlpha);	
 		}
 		else {
 			var xToDraw = x + random_range((global.battlePoints * -1)/20,global.battlePoints/20);
 			if(floor(global.gameClock) % 3 == 0) chaosMeterColor = #ebebeb;
-			draw_sprite_ext(sChaosMeter,2,xToDraw,y,UI_XSCALE,UI_YSCALE,0,chaosMeterColor,chaosMeterAlpha);
+			draw_sprite_ext(sChaosMeter,2,xToDraw * UI_XSCALE + 8,y * UI_YSCALE,UI_XSCALE,UI_YSCALE,0,chaosMeterColor,chaosMeterAlpha);
 		}
 	} 
 	
-	var chaosMeterNumX = (x + chaosMeterSprWidthHalf -2) * UI_XSCALE;
-	var chaosMeterNumY = (y + chaosMeterSprHeightHalf + 4) * UI_YSCALE;
+	var chaosMeterNumX = (x - chaosMeterSprWidthHalf + 3) * UI_XSCALE;
+	
+	var chaosMeterNumY = (y + chaosMeterSprHeightHalf + 7) * UI_YSCALE;
 	
 	draw_set_font(fPixelTextMini);
 	draw_set_halign(fa_center);

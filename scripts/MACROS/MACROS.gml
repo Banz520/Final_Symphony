@@ -16,9 +16,9 @@ function MACROS(){
 	
 	#macro MAX_BATTLEPOINTS 20
 	
-	#macro BUFFBIG 0.33
-	#macro BUFFMID 0.25
-	#macro BUFFSMALL 0.12
+	#macro BUFFBIG 3
+	#macro BUFFMID 2
+	#macro BUFFSMALL 1
 	
 	enum HP{
 		
@@ -30,10 +30,10 @@ function MACROS(){
 	
 	enum DMG{
 		
-		MASSIVE = 10,
-		HIGH = 7,
-		MID = 5,
-		LOW = 3
+		MASSIVE = 7,
+		HIGH = 5,
+		MID = 3,
+		LOW = 2
 		
 	}
 	
@@ -59,7 +59,10 @@ function MACROS(){
 	enum PROYECTILE_SPR{
 		FIREBALL,
 		ARROW,
-		POTION
+		POTION,
+		ROCKET,
+		BULLET,
+		TNT
 		
 	}
 		

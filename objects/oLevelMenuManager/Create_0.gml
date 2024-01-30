@@ -12,13 +12,19 @@ ySeparation = 15;
 levelButtonXScale = 10;
 levelButtonYScale = 2;
 
+arrowsXOrigin = (xOrigin + xSeparation + levelButtonXScale * sprite_get_width(sLevelSelectorButton)) * UI_XSCALE;
+arrowsYOrigin = RES_HEIGHT * 0.5 * UI_YSCALE;
+
+arrowImage = 1;
+
 //Add here each level configuration
 levelSelectorList = [
 
-	["Lmanberg - Ode to Lmanberg\nIndependance War",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundLmanbergDay,[oEnemyDream,oEnemySnapnap,oEnemyGeorge,oEnemyPunz],[oWilburLmanberg,oTommyLmanberg,oTubboLmanberg,oTheEretLmanberg],0,sqComicLmanberg1],
-	["Lmanberg - FINAL SYMPHONY\nTommy vs Dream Duel",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundLmanberg,[oEnemyDream],[oTommyLmanberg],1,sqComicLmanberg1],
-	["Manberg Festival part 1",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundManberg,[oEnemyDream,oEnemyGeorge],[oWilburLmanberg,oTommyLmanberg],1,sqComicLmanberg1],
-	
+	["Lmanberg - Independance War",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundLmanbergDay,[oEnemyDream,oEnemySnapnap,oEnemyGeorge,oEnemyPunz],[oWilburLmanberg,oTommyLmanberg,oTubboLmanberg,oTheEretLmanberg],0,sqComicLmanberg1],
+	["Lmanberg - Meant To Be",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundFinalControlRoom,[oEnemyDream,oEnemyPunz,oEnemySnapnap,oEnemyEret],[oWilburLmanberg,oTubboLmanberg,oFundyLmanberg,oTommyLmanberg],0,sqComicEmpty],
+	["Lmanberg - Final Duet",LEVELSELECT_SPRITE.LMANBERG_OUTLINE,sBackGroundLmanberg,[oEnemyDream],[oTommyLmanberg],1,sqComicEmpty],
+	["Manberg - The Elections",LEVELSELECT_SPRITE.RED_OUTLINE,sBackGroundManberg,[oEnemySchlatt,oEnemyQuackityManberg,oEnemyGeorge,oEnemyPunz],[oWilburLmanberg,oTommyLmanberg],0,sqComicEmpty],
+	["Manberg - Red Festival",LEVELSELECT_SPRITE.RED_OUTLINE,sBackGroundManbergFestival,[oEnemyQuackityManberg,oEnemyTubboManberg,oEnemySchlatt],[oWilburPogtopia,oTechnoBlade],1,sqComicEmpty],
 ];
 
 levelSelectListLength = array_length(levelSelectorList);
@@ -28,7 +34,7 @@ for(var i = 0; i < levelSelectListLength; i++){
 		
 		levelButtonList[i] = instance_create_depth(
 			xOrigin + xSeparation,
-			yOrigin + ySeparation*i + oLevelSelector*levelButtonYScale*i,
+			yOrigin + ySeparation * i + sprite_get_height(sLevelSelectorButton) * levelButtonYScale * i,
 			depth,
 			oLevelSelector,
 			{	
@@ -40,11 +46,12 @@ for(var i = 0; i < levelSelectListLength; i++){
 				levelEnemyList: levelSelectorList[i][3],
 				levelPlayerCharasList: levelSelectorList[i][4],
 				levelSpawnDistance: levelSelectorList[i][5],
-				levelComic: levelSelectorList[i][6]
+				levelComic: levelSelectorList[i][6],
 				
+				//numberID: i
 			}
 		);	
 }
 	
-backgroundMenu = instance_create_depth(0,0,depth+10,oBackgroundMenu,{sprite_index: levelSelectorList[0][2], image_alpha: 0.1});
+backgroundMenu = instance_create_depth(0,0,depth + 10,oBackgroundMenu,{sprite_index: levelSelectorList[0][2], image_alpha: 0.1});
 

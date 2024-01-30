@@ -1,4 +1,4 @@
-/// @description event_inherited();
+/// @description 
 event_inherited();
 
 function EnemyStateTurn(){
@@ -12,7 +12,7 @@ function EnemyStateTurn(){
 
 function EnemyStateAttack(){
 	
-	EnemyAttackThrow(4,PROYECTILE_SPR.FIREBALL)
+	EnemyAttackThrowSpam(6,PROYECTILE_SPR.FIREBALL);
 }
 
 

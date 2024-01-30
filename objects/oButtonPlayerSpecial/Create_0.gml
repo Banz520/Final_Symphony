@@ -4,5 +4,4 @@
 event_inherited();
 
 buttonSetAction = buttonPlayerCharaParent.charaStateSpecial;
-
-actionDescription = string(actionDescription) + "\nCost: " + string(buttonPlayerCharaParent.charaSpecialActCost) + " Chaos Points";
+actionCost = buttonPlayerCharaParent.charaSpecialActCost;
